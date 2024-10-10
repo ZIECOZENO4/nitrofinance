@@ -2,7 +2,7 @@
 import { Search } from "lucide-react"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Card, Chip, Tabs, Tab } from "@nextui-org/react";
+import { Chip} from "@nextui-org/react";
 
 export default function CardContent() {
   const [selectedButton, setSelectedButton] = useState("All")
