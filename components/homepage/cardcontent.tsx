@@ -97,10 +97,10 @@ export default function CardContent() {
             </div>
             <div className="flex justify-start gap-6 text-sm mb-8">
            
-              <Chip rounded='xs' className="flex-grow text-xs  bg-[#1d1f1f] p-1">
+              <Chip className="flex-grow text-xs  bg-[#1d1f1f] p-1">
               0x23..34d
               </Chip>
-              <Chip rounded='xs' className="flex-grow text-xs bg-[#1d1f1f] p-1">
+              <Chip  className="flex-grow text-xs bg-[#1d1f1f] p-1">
               0.03%
               </Chip>
          
