@@ -2,9 +2,9 @@
 const nextConfig = {
     swcMinify: false, // Disable SWC minification
     webpack: (config, { isServer }) => {
-      // Resolve @babel/runtime
-      config.resolve.alias['@babel/runtime'] = require.resolve('@babel/runtime');
-  
+      // Use import instead of require
+      config.resolve.alias['@babel/runtime'] = import.meta.url.replace(/\/[^/]+$/, '') + '/node_modules/@babel/runtime';
+      
       // Add any other custom webpack configurations here
       
       return config;
