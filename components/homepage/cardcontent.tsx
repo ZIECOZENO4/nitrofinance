@@ -3,6 +3,7 @@ import { Search } from "lucide-react"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Chip} from "@nextui-org/react";
+import CustomChip from "./CustomChip";
 
 export default function CardContent() {
   const [selectedButton, setSelectedButton] = useState("All")
@@ -91,20 +92,17 @@ export default function CardContent() {
                 </div>
                 <span className="">NIT/USDC</span>
               </div>
-              <span className={`text-sm ${item.status === "Ongoing" ? "text-[#ffa500]" : "text-[#ff0000]"}`}>
-                {item.status}
-              </span>
+              <span className="status-indicator flex items-center">
+      <span className={`dot mr-2 ${item.status === "Ongoing" ? "dot-ongoing" : "dot-closed"}`}></span>
+      <span className={`text-sm ${item.status === "Ongoing" ? "text-[#ffa500]" : "text-[#ff0000]"}`}>
+        {item.status}
+      </span>
+    </span>
             </div>
             <div className="flex justify-start gap-6 text-sm mb-8">
-           
-              <Chip className="flex-grow text-xs  bg-[#1d1f1f] p-1">
-              0x23..34d
-              </Chip>
-              <Chip  className="flex-grow text-xs bg-[#1d1f1f] p-1">
-              0.03%
-              </Chip>
-         
-            </div>
+            <CustomChip text="0x23..34d" hoverText="Wallet Address" />
+            <CustomChip text="0.03%" hoverText="Bin Step" />
+</div>
             <div className="flex justify-between items-center text-sm mb-4">
               <span className='text-xs text-slate-600'>Total Locked</span>
               <div className="flex items-center ">

@@ -447,3 +447,54 @@ body {
     stroke-dashoffset: -60;
   }
 }
+
+.status-indicator .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+}
+
+.status-indicator .dot-ongoing {
+  background-color: #ffa500;
+}
+
+.status-indicator .dot-closed {
+  background-color: #ff0000;
+}
+
+.status-indicator .dot::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-indicator .dot-ongoing::before {
+  background-color: #ffa500;
+}
+
+.status-indicator .dot-closed::before {
+  background-color: #ff0000;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+}
