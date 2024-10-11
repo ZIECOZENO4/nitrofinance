@@ -13,7 +13,7 @@ const CustomChip: React.FC<CustomChipProps> = ({ text, hoverText, ...props }) =>
   return (
     <div className="relative">
       {isHovered && (
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-700 text-white text-xs rounded">
+        <div className="absolute text-[9px] flex bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#1d1f1f] text-white text-xs rounded">
           {hoverText}
         </div>
       )}
