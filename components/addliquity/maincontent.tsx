@@ -27,7 +27,13 @@ export default function MainContent() {
       setMaxPrice(value);
     }
   };
+  const incrementMaxPrice = () => {
+    setMaxPrice((prev) => (parseFloat(prev) + 0.00001).toFixed(5));
+  };
 
+  const decrementMaxPrice = () => {
+    setMaxPrice((prev) => Math.max(0, parseFloat(prev) - 0.00001).toFixed(5));
+  };
   const isFormComplete = () => {
     return (
       amount !== "0.00" &&
@@ -116,10 +122,11 @@ export default function MainContent() {
                   {option.chart.map((value, index) => (
                     <motion.div
                       key={index}
-                      className="w-4 rounded bg-gradient-to-t  from-cyan-00 to-cyan-700"
+                      className="w-4 rounded bg-gradient-to-t  from-cyan-300 to-cyan-500"
                       initial={{ height: 0 }}
                       animate={{ height: `${value * 10}%` }}
                       transition={{ duration: 0.5, delay: index * 0.05 }}
+                      whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
                     />
                   ))}
                 </div>
