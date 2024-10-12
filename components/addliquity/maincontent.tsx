@@ -151,10 +151,10 @@ export default function MainContent() {
         <div>
           <h2 className="text-xs font-semibold mb-2">Set distribution range</h2>
          
-          <div className="flex  items-center space-x-4">
+          <div className="flex justify-between w-full space-x-4">
           <div className="flex flex-col items-center ">
           <p className="text-xs text-white text-center mb-2">
-            Starting price: 2.687 USDC per NIT are not applying 
+            Starting price: 2.687 USDC per NIT
           </p>
             <input
               type="range"
@@ -162,21 +162,21 @@ export default function MainContent() {
               max="100"
               value={sliderValue}
               onChange={(e) => setSliderValue(parseInt(e.target.value))}
-              className="w-full"
+              className="w-full bg-gray-900 border border-gray-700"
             />
                </div>
-            <div className="bg-gray-900 border border-gray-700 rounded px-3 py-2 flex justify-between items-center space-x-2 gap-2">
-              <button     onClick={incrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-2">+</button>
+            <div className="bg-black rounded px-2 py-2 flex justify-between items-center space-x-2 gap-2">
+              <button     onClick={incrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-1">+</button>
             <div className="flex flex-col items-center ">
               <span className="text-gray-500 text-xs">Max Price</span>
               <input
                 type="text"
                 value={maxPrice}
                 onChange={handleMaxPriceChange}
-                className="w-24 bg-gradient-to-r  from-cyan-300 to-blue-800 focus:outline-none text-right"
+                className="w-24 bg-black focus:outline-none text-right"
               />
                </div>
-               <button  onClick={decrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-2">-</button>
+               <button  onClick={decrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-1">-</button>
             </div>
           </div>
         </div>
@@ -218,7 +218,7 @@ export default function MainContent() {
           </span>
         </motion.button>
         <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
-        <ModalContent className="bg-black">
+        <ModalContent className="bg-black p-3">
           {(onClose) => (
       <AnimatePresence>
         {isOpen && (
@@ -230,47 +230,37 @@ export default function MainContent() {
             className=""
           >
             <div className="p-4 flex justify-between items-center border-b border-gray-700">
-              <h2 className="text-white text-sm font-semibold">Select token</h2>
+              <h2 className="text-white text-sm font-semibold">LP</h2>
               <button onClick={onClose} className="text-gray-400  hover:text-white">
                 <X size={20} />
               </button>
             </div>
-            <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md w-full"
-    >
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold">LP</h2>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="text-gray-400 hover:text-white"
-        >
-          <X size={24} />
-        </motion.button>
-      </div>
-
       <div className="space-y-6">
         <div>
-          <label htmlFor="limitPerUser" className="block text-sm font-medium mb-2">
+          <label htmlFor="limitPerUser" className="block text-xs font-medium mt-4 mb-2">
             Limit per user
           </label>
           <motion.div variants={inputVariants} whileFocus="focus" initial="blur" animate="blur">
-            <input
-              id="limitPerUser"
-              type="number"
-              value={limitPerUser}
-              onChange={(e) => setLimitPerUser(e.target.value)}
-              className="bg-gray-800 border-gray-700 text-white w-full"
-            />
+        <div className="relative w-full">
+  <input
+    id="limitPerUser"
+    type="number"
+    value={limitPerUser}
+    onChange={(e) => setLimitPerUser(e.target.value)}
+    className="bg-[#121212] border border-slate-800 p-6 pr-12 rounded w-full outline-none focus:outline-none focus:ring-2 focus:ring-[#00ffff] placeholder-gray-500"
+  />
+  <img
+    src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"
+    alt="Input icon"
+    className="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6"
+  />
+</div>
           </motion.div>
         </div>
 
         <div>
-          <h3 className="text-sm font-medium mb-2">Allocation weight</h3>
-          <div className="bg-gray-800 border border-gray-700 rounded-md overflow-hidden">
+          <h3 className="text-xs mb-2">Allocation weight</h3>
+          <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-700">
@@ -288,11 +278,9 @@ export default function MainContent() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 my-6"></div>
-
         <div>
-          <h3 className="text-sm font-medium mb-2">Duration</h3>
-          <div className="bg-gray-800 border border-gray-700 rounded-md overflow-hidden">
+          <h3 className="text-xs mb-2">Duration</h3>
+          <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-700">
@@ -316,12 +304,40 @@ export default function MainContent() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-2 px-4 rounded">
-            Start LP
-          </button>
+     
+          <motion.button
+         className={`relative w-full py-4 px-8 text-white font-medium text-lg rounded-lg overflow-hidden group`}
+  
+        onClick={onOpen}
+        >
+          {/* Border */}
+          <span className="absolute inset-0 w-full h-full border-2 border-[#00ffff] rounded-lg"></span>
+
+          {/* Gradient backgrounds */}
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00ffff] to-[#0080ff] transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
+
+          {/* Button content */}
+          <span className="relative flex items-center justify-center">
+            <span className="mr-4">  Start LP</span>
+            <svg
+              className="w-5 h-5 transition-transform duration-300 ease-out transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </span>
+        </motion.button>
         </motion.div>
       </div>
-    </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
