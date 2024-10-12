@@ -1,21 +1,82 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, ArrowLeft } from "lucide-react"
-import { Tabs, Tab } from "@nextui-org/react";
+import {Modal, ModalContent, useDisclosure} from "@nextui-org/react";
+import { Search, X } from "lucide-react"
+import { useRouter } from 'next/navigation'
+
+interface Token {
+    name: string;
+    fullName: string;
+    balance: string;
+    icon: string;
+  }
+
+const tokens: Token[] = [
+  { name: "ETH", fullName: "Ethereum", balance: "0.00012", icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png" },
+  { name: "MONAD", fullName: "Monad", balance: "0.0000", icon: "/images/circle.PNG" },
+  { name: "NIT", fullName: "Nitro", balance: "0.0000", icon: "/images/Capture.PNG" },
+  { name: "USDC", fullName: "USD Coin", balance: "119.000", icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png" },
+];
+
 export default function MainContent() {
-  const [baseAsset, setBaseAsset] = useState("NIT Nitro finance")
-  const [quoteAsset, setQuoteAsset] = useState("USDC USD Coin")
-  const [selectedPreset, setSelectedPreset] = useState(0)
-  const [activePrice, setActivePrice] = useState("0.0")
+  const router = useRouter();
+  const [activePrice, setActivePrice] = useState("0.0");
   const [selectedTab, setSelectedTab] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [baseToken, setBaseToken] = useState<Token | null>(null);
+  const [quoteToken, setQuoteToken] = useState<Token | null>(null);
+  const [isSelectingBase, setIsSelectingBase] = useState(true);
+
+  const filteredTokens = tokens.filter(
+    (token) =>
+      token.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      token.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleTokenSelect = (token: Token) => {
+    if (isSelectingBase) {
+      setBaseToken(token);
+    } else {
+      if (token.name !== baseToken?.name) {
+        setQuoteToken(token);
+      } else {
+        // Show an error message or handle this case
+        console.error("Quote token must be different from base token");
+      }
+    }
+    onClose();
+  };
+  const handleTokenSelect2 = (token: Token) => {
+    if (isSelectingBase) {
+      setBaseToken(token);
+    } else {
+      if (token.name !== baseToken?.name) {
+        setQuoteToken(token);
+      } else {
+        // Show an error message or handle this case
+        console.error("Quote token must be different from base token");
+      }
+    }
+    onClose();
+  };
+  const openTokenModal = (isBase: boolean) => {
+    setIsSelectingBase(isBase);
+    onOpen();
+  };
+
   const presets = [
     { percentage: "0.25%", fee: "0.3%" },
     { percentage: "0.5%", fee: "1%" },
     { percentage: "0.15%", fee: "0.5%" },
   ]
 
+  const isFormComplete = () => {
+    return baseToken && quoteToken && baseToken !== quoteToken && activePrice !== "0.0" && activePrice !== "";
+  };
   return (
     <div className=" text-white p-6  max-w-3xl mt-10 mx-auto">
       <div className="flex justify-between items-center mb-12">
@@ -23,12 +84,13 @@ export default function MainContent() {
           className="flex items-center text-xs text-slate-400"
           whileHover={{ x: -2 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => router.push('/')}
         >
-          <ArrowLeft size={20} className="mr-2" />
+          <ArrowLeft size={20} className="mr-2 bg-black" />
           Back
         </motion.button>
         <motion.button
-          className="px-2 py-1 rounded-lg border border-[#c4bebe] bg-black"
+          className="px-2 py-1 rounded-lg border border-[#353434] bg-black"
     
           whileTap={{ scale: 0.95 }}
         >
@@ -50,28 +112,164 @@ export default function MainContent() {
             className="bg-[#121212] border border-slate-800 py-4 px-6 rounded flex justify-between items-center cursor-pointer"
             whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
             whileTap={{ scale: 0.98 }}
+            onClick={onOpen}
           >
-            <span className="flex text-xs items-center">
-           Select Token
+           <span className="flex text-xs items-center">
+              {baseToken ? (
+                <>
+                  <img src={baseToken.icon} alt={baseToken.name} className="w-6 h-6 mr-2" />
+                  {baseToken.name}
+                </>
+              ) : (
+                'Select Token'
+              )}
             </span>
             <ChevronDown size={20} />
           </motion.div>
         </div>
-
-        <div>
-          <label className="block mb-2 text-xs font-medium">Select quote asset</label>
+        <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
+        <ModalContent className="bg-black">
+          {(onClose) => (
+      <AnimatePresence>
+        {isOpen && (
           <motion.div
-            className="bg-[#121212] border border-slate-800 py-4 px-6  rounded flex justify-between items-center cursor-pointer"
-            whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
-            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className=""
           >
-            <span className="flex text-xs items-center">
-           Select Token
-            </span>
-            <ChevronDown size={20} />
+            <div className="p-4 flex justify-between items-center border-b border-gray-700">
+              <h2 className="text-white text-sm font-semibold">Select token</h2>
+              <button onClick={onClose} className="text-gray-400  hover:text-white">
+                <X size={20} />
+              </button>
+            </div>
+            <div className="p-4">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search token or paste address"
+                  className="w-full   rounded-md py-2 pl-10 pr-4   text-gray-400 bg-[#121212] border border-slate-800 p-6  outline-none focus:outline-none focus:ring-2 focus:ring-[#00ffff] placeholder-gray-500"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <Search className="absolute left-3 top-2.5 " size={20} />
+              </div>
+              <div className="mt-4 space-y-2">
+                <AnimatePresence>
+                  {filteredTokens.map((token) => (
+                    <motion.div
+                      key={token.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex items-center justify-between p-2 hover:bg-[#121212] rounded-md cursor-pointer"
+                      onClick={() => handleTokenSelect(token)}
+                    >
+                      <div className="flex items-center">
+                        <img src={token.icon} alt={token.name} className="w-8 h-8 mr-3" />
+                        <div>
+                          <div className="text-white font-medium text-xs">{token.name}</div>
+                          <div className="text-gray-400 text-[8px]">{token.fullName}</div>
+                        </div>
+                      </div>
+                      <div className="text-white text-xs">{token.balance}</div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </div>
           </motion.div>
-        </div>
+        )}
+      </AnimatePresence>
+          )}
+        </ModalContent>
+      </Modal>
+      <div>
+  <label className="block mb-2 text-xs font-medium">Select quote asset</label>
+  <motion.div
+    className="bg-[#121212] border border-slate-800 py-4 px-6 rounded flex justify-between items-center cursor-pointer"
+    whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
+    whileTap={{ scale: 0.98 }}
+    onClick={() => openTokenModal(false)}
+  >
+    <span className="flex text-xs items-center">
+      {quoteToken ? (
+        <>
+          <img src={quoteToken.icon} alt={quoteToken.name} className="w-6 h-6 mr-2" />
+          {quoteToken.name}
+        </>
+      ) : (
+        'Select Token'
+      )}
+    </span>
+    <ChevronDown size={20} />
+  </motion.div>
+</div>
 
+<Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
+  <ModalContent className="bg-black">
+    {(onClose) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="p-4 flex justify-between items-center border-b border-gray-700">
+              <h2 className="text-white text-sm font-semibold">Select quote token</h2>
+              <button onClick={onClose} className="text-gray-400 hover:text-white">
+                <X size={20} />
+              </button>
+            </div>
+            <div className="p-4">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search token or paste address"
+                  className="w-full rounded-md py-2 pl-10 pr-4 text-gray-400 bg-[#121212] border border-slate-800 p-6 outline-none focus:outline-none focus:ring-2 focus:ring-[#00ffff] placeholder-gray-500"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <Search className="absolute left-3 top-2.5" size={20} />
+              </div>
+              <div className="mt-4 space-y-2">
+                <AnimatePresence>
+                  {filteredTokens
+                    .filter(token => token.name !== baseToken?.name)
+                    .map((token) => (
+                      <motion.div
+                        key={token.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex items-center justify-between p-2 hover:bg-[#121212] rounded-md cursor-pointer"
+                        onClick={() => handleTokenSelect(token)}
+                      >
+                        <div className="flex items-center">
+                          <img src={token.icon} alt={token.name} className="w-8 h-8 mr-3" />
+                          <div>
+                            <div className="text-white font-medium text-xs">{token.name}</div>
+                            <div className="text-gray-400 text-[8px]">{token.fullName}</div>
+                          </div>
+                        </div>
+                        <div className="text-white text-xs">{token.balance}</div>
+                      </motion.div>
+                    ))}
+                </AnimatePresence>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    )}
+  </ModalContent>
+</Modal>
         <div>
           <div className="flex justify-between items-center mt-4 mb-2">
             <label className="text-xs ">Preset</label>
@@ -129,15 +327,46 @@ export default function MainContent() {
         </div>
 
         <motion.button
-          className="w-full py-3 rounded text-center text-white font-medium"
-          style={{
-            background: "linear-gradient(90deg, #4fd1c5 0%, #63b3ed 100%)",
-          }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          Initialize
-        </motion.button>
+ className={`relative w-full py-4 px-8 text-white font-medium text-lg rounded-lg overflow-hidden group ${
+    !isFormComplete() ? 'opacity-50 cursor-not-allowed' : ''
+  }`}
+  whileHover={isFormComplete() ? { scale: 1.02 } : {}}
+  whileTap={isFormComplete() ? { scale: 0.98 } : {}}
+  disabled={!isFormComplete()}
+  onClick={() => router.push('/addliquidity')}
+>
+  {/* Border */}
+  <span className="absolute inset-0 w-full h-full border-2 border-[#00ffff] rounded-lg"></span>
+  
+  {/* Gradient backgrounds */}
+  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
+  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00ffff] to-[#0080ff] transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
+  
+  {/* Button content */}
+  <span className="relative flex items-center justify-center">
+    <span className="mr-4">Initialize </span>
+    <svg
+      className="w-5 h-5 transition-transform duration-300 ease-out transform group-hover:translate-x-1"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+    </svg>
+  </span>
+</motion.button>
+{!isFormComplete() && (
+  <p className="text-red-500 text-sm mt-2 text-center">
+    {!baseToken || !quoteToken
+      ? "Please select both base and quote tokens"
+      : baseToken === quoteToken
+      ? "Base and quote tokens must be different"
+      : activePrice === "0.0" || activePrice === ""
+      ? "Please enter a valid active price"
+      : ""}
+  </p>
+)}
       </div>
     </div>
   )
