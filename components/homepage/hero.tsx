@@ -1,4 +1,10 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+
 export default function HomeHero() {
+  const router = useRouter()
+
     return (
       <div className="relative w-full h-[70vh] mb-4 mt-10 overflow-hidden rounded-lg">
         <img
@@ -10,7 +16,7 @@ export default function HomeHero() {
           <div className="flex flex-col justify-center h-full max-w-md p-8 text-white">
             <h2 className=" text-[60px] font-bold">NITRO</h2>
             <h2 className="mb-4 text-[60px] font-bold">LUNCHPAD</h2>
-            <button className="buttona bg-gradient-to-r from-cyan-300 to-blue-800">
+            <button onClick={() => router.push('/lunch')} className="buttona bg-gradient-to-r from-cyan-300 to-blue-800">
       <div className="bg"></div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
