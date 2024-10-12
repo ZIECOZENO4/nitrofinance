@@ -10,10 +10,22 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export default function MainContent() {
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [amount, setAmount] = useState("0.00");
   const [selectedDistribution, setSelectedDistribution] = useState("ascend");
   const [sliderValue, setSliderValue] = useState(50);
   const [maxPrice, setMaxPrice] = useState("6.23489");
+  const [limitPerUser, setLimitPerUser] = useState("0.00")
+  const [buyingPrice, setBuyingPrice] = useState("10")
+  const [endPrice, setEndPrice] = useState("90")
+  const [days, setDays] = useState("00")
+  const [hours, setHours] = useState("00")
+  const [minutes, setMinutes] = useState("00")
+
+  const inputVariants = {
+    focus: { scale: 1.05, transition: { type: "spring", stiffness: 300, damping: 10 } },
+    blur: { scale: 1, transition: { type: "spring", stiffness: 300, damping: 10 } }
+  }
 
   const distributionOptions = [
     { id: "ascending", label: "Ascending", chart: [1, 2, 3, 4, 5, 6, 7, 8,9] },
@@ -137,11 +149,13 @@ export default function MainContent() {
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold mb-2">Set distribution range</h2>
-          <p className="text-sm text-gray-500 mb-2">
-            Starting price: 2.687 USDC per NIT
+          <h2 className="text-xs font-semibold mb-2">Set distribution range</h2>
+         
+          <div className="flex  items-center space-x-4">
+          <div className="flex flex-col items-center ">
+          <p className="text-xs text-white text-center mb-2">
+            Starting price: 2.687 USDC per NIT are not applying 
           </p>
-          <div className="flex items-center space-x-4">
             <input
               type="range"
               min="0"
@@ -150,14 +164,19 @@ export default function MainContent() {
               onChange={(e) => setSliderValue(parseInt(e.target.value))}
               className="w-full"
             />
-            <div className="bg-gray-900 border border-gray-700 rounded px-3 py-2 flex items-center space-x-2">
-              <span className="text-gray-500 text-sm">Max Price</span>
+               </div>
+            <div className="bg-gray-900 border border-gray-700 rounded px-3 py-2 flex justify-between items-center space-x-2 gap-2">
+              <button     onClick={incrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-2">+</button>
+            <div className="flex flex-col items-center ">
+              <span className="text-gray-500 text-xs">Max Price</span>
               <input
                 type="text"
                 value={maxPrice}
                 onChange={handleMaxPriceChange}
-                className="w-24 bg-transparent focus:outline-none text-right"
+                className="w-24 bg-gradient-to-r  from-cyan-300 to-blue-800 focus:outline-none text-right"
               />
+               </div>
+               <button  onClick={decrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-2">-</button>
             </div>
           </div>
         </div>
@@ -170,7 +189,7 @@ export default function MainContent() {
         whileHover={isFormComplete() ? { scale: 1.02 } : {}}
         whileTap={isFormComplete() ? { scale: 0.98 } : {}}
         disabled={!isFormComplete()}
-        onClick={() => router.push("/addliquidity")}
+        onClick={onOpen}
         >
           {/* Border */}
           <span className="absolute inset-0 w-full h-full border-2 border-[#00ffff] rounded-lg"></span>
@@ -198,6 +217,117 @@ export default function MainContent() {
             </svg>
           </span>
         </motion.button>
+        <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
+        <ModalContent className="bg-black">
+          {(onClose) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className=""
+          >
+            <div className="p-4 flex justify-between items-center border-b border-gray-700">
+              <h2 className="text-white text-sm font-semibold">Select token</h2>
+              <button onClick={onClose} className="text-gray-400  hover:text-white">
+                <X size={20} />
+              </button>
+            </div>
+            <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md w-full"
+    >
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-xl font-bold">LP</h2>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="text-gray-400 hover:text-white"
+        >
+          <X size={24} />
+        </motion.button>
+      </div>
+
+      <div className="space-y-6">
+        <div>
+          <label htmlFor="limitPerUser" className="block text-sm font-medium mb-2">
+            Limit per user
+          </label>
+          <motion.div variants={inputVariants} whileFocus="focus" initial="blur" animate="blur">
+            <input
+              id="limitPerUser"
+              type="number"
+              value={limitPerUser}
+              onChange={(e) => setLimitPerUser(e.target.value)}
+              className="bg-gray-800 border-gray-700 text-white w-full"
+            />
+          </motion.div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-medium mb-2">Allocation weight</h3>
+          <div className="bg-gray-800 border border-gray-700 rounded-md overflow-hidden">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b border-gray-700">
+                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Buying price</th>
+                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4">End price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="py-2 px-4 border-r border-gray-700">{buyingPrice}%</td>
+                  <td className="py-2 px-4">{endPrice}%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-700 my-6"></div>
+
+        <div>
+          <h3 className="text-sm font-medium mb-2">Duration</h3>
+          <div className="bg-gray-800 border border-gray-700 rounded-md overflow-hidden">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b border-gray-700">
+                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Days</th>
+                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Hours</th>
+                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4">Minutes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="py-2 px-4 border-r border-gray-700">{days}</td>
+                  <td className="py-2 px-4 border-r border-gray-700">{hours}</td>
+                  <td className="py-2 px-4">{minutes}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-2 px-4 rounded">
+            Start LP
+          </button>
+        </motion.div>
+      </div>
+    </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+          )}
+        </ModalContent>
+      </Modal>
         {!isFormComplete() && (
   <p className="text-red-500 text-sm mt-2 text-center">
     {amount === "0.00"

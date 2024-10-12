@@ -4,8 +4,10 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Chip} from "@nextui-org/react";
 import CustomChip from "./CustomChip";
+import { useRouter } from 'next/navigation'
 
 export default function CardContent() {
+  const router = useRouter()
   const [selectedButton, setSelectedButton] = useState("All")
   const [backgroundPosition, setBackgroundPosition] = useState(0)
 
@@ -78,10 +80,11 @@ export default function CardContent() {
         {filteredCards.map((item, index) => (
           <motion.div 
             key={index} 
-            className="bg-black border border-white rounded-lg p-4"
+            className="bg-black border cusor-pointer border-white rounded-lg p-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
+            onClick={() => router.push('/coindetails')}
           >
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
