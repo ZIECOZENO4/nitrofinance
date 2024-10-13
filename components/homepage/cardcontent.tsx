@@ -32,7 +32,7 @@ export default function CardContent() {
     : cards.filter(card => card.status === selectedButton)
 
   return (
-    <div className="bg-black my-6 text-white font-sans">
+    <div className="bg-black my-6 text-white ">
       <div className="mb-6 flex items-center space-x-4 gap-6 relative">
         {buttons.map((button) => (
           <motion.button

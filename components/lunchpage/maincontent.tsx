@@ -95,7 +95,7 @@ export default function MainContent() {
           whileTap={{ scale: 0.95 }}
         >
         <motion.button
-          className="px-4 py-2 font-bold rounded-lg border border-purple-600 text-purple-600"
+          className="px-4 py-2 font-bold rounded-lg border border-purple-400 text-purple-400"
           whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
           whileTap={{ scale: 0.95 }}
         >

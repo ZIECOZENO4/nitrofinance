@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 interface DataItem {
@@ -39,6 +39,7 @@ export default function ExactPoolDistributionGraph() {
   const [hoveredBar, setHoveredBar] = useState<number | null>(null)
   const [scale, setScale] = useState<number>(1)
   const [graphHeight, setGraphHeight] = useState<number>(260) // Initial height of 40 * 4
+  const tooltipRef = useRef<HTMLDivElement>(null)
 
   const adjustScale = (adjustment: number) => {
     const newScale = Math.max(0.5, Math.min(2, scale + adjustment))
@@ -50,6 +51,12 @@ export default function ExactPoolDistributionGraph() {
   const generateFakePrice = () => {
     return (Math.random() * 100 + 1000).toFixed(2)
   }
+
+  useEffect(() => {
+    if (tooltipRef.current) {
+      tooltipRef.current.style.opacity = '1'
+    }
+  }, [hoveredBar])
 
   return (
     <div className="bg-black text-white p-4 w-full">
@@ -69,8 +76,8 @@ export default function ExactPoolDistributionGraph() {
 
       <div className="relative mb-10" style={{ height: `${graphHeight + 24}px` }}>
         <div className="absolute top-0 right-0 space-x-2">
-          <button onClick={() => adjustScale(0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-sm">+</button>
-          <button onClick={() => adjustScale(-0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-sm">-</button>
+          <button onClick={() => adjustScale(0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-xl">+</button>
+          <button onClick={() => adjustScale(-0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-xl">-</button>
         </div>
         {mockData.map((item, index) => (
           <motion.div
@@ -103,20 +110,20 @@ export default function ExactPoolDistributionGraph() {
         ))}
         {hoveredBar !== null && (
           <motion.div
-            className="absolute z-50 bg-gray-800 bg-opacity-50 gap-4  text-white p-4 rounded text-xs whitespace-nowrap"
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
+            ref={tooltipRef}
+            className="absolute z-50 bg-gray-800 bg-opacity-50 text-white p-4 rounded text-xs whitespace-nowrap"
+            initial={{ opacity: 0, x: 0 }}
+            animate={{ opacity: 1, x: 5 }}
             style={{
-              left: `${hoveredBar * 2.5 * scale}%`,
-              bottom: '100%',
-              transform: 'translateX(-50%)',
-              marginBottom: '5px'
+              left: `calc(${hoveredBar * 2.5 * scale}% + ${2 * scale}%)`,
+              bottom: `${mockData[hoveredBar].height * scale}%`,
+              transform: `translateY(50%)`,
             }}
           >
-            <div className='my-1'>USDC: {mockData[hoveredBar].usdc.toFixed(2)}%</div>
-            <div className='my-1'>KAN: {mockData[hoveredBar].nit.toFixed(2)}%</div>
-            <div className='my-1'>USDC Price: ${generateFakePrice()}</div>
-            <div className='my-1'>KAN Price: ${generateFakePrice()}</div>
+            <div className='my-3'>USDC: {mockData[hoveredBar].usdc.toFixed(2)}%</div>
+            <div className='my-3'>KAN: {mockData[hoveredBar].nit.toFixed(2)}%</div>
+            <div className='my-3'>USDC Price: ${generateFakePrice()}</div>
+            <div className='my-3'>KAN Price: ${generateFakePrice()}</div>
           </motion.div>
         )}
       </div>
