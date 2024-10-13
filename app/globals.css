@@ -460,6 +460,10 @@ body {
   background-color: #ffa500;
 }
 
+.status-indicator .dot-upcoming {
+  background-color: #33e942;
+}
+
 .status-indicator .dot-closed {
   background-color: #ff0000;
 }
@@ -478,6 +482,10 @@ body {
 
 .status-indicator .dot-ongoing::before {
   background-color: #ffa500;
+}
+
+.status-indicator .dot-upcoming::before {
+  background-color: #33e942;
 }
 
 .status-indicator .dot-closed::before {

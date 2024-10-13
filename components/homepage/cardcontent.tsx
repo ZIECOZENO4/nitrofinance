@@ -18,9 +18,10 @@ export default function CardContent() {
     return () => clearInterval(interval)
   }, [])
 
-  const buttons = ["All", "Ongoing", "Closed"]
+  const buttons = ["All", "Upcoming", "Ongoing", "Closed"]
 
   const cards = [
+    { status: "Upcoming", locked: "40M", volume: "20M", time: "00h : 19m : 34s" },
     { status: "Ongoing", locked: "10M", volume: "20M", time: "00h : 19m : 34s" },
     { status: "Closed", locked: "46M", volume: "22M", time: "00h : 00m : 00s" },
     { status: "Ongoing", locked: "10M", volume: "20M", time: "00h : 19m : 34s" },
@@ -36,7 +37,7 @@ export default function CardContent() {
         {buttons.map((button) => (
           <motion.button
             key={button}
-            className={`z-10 font-medium transition-colors duration-300 w-16 h-10 text-center relative overflow-hidden rounded-md`}
+            className={`z-10 font-medium transition-colors duration-300 w-20 h-10 text-center relative overflow-hidden rounded-md`}
             onClick={() => setSelectedButton(button)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -96,10 +97,24 @@ export default function CardContent() {
                 <span className="">NIT/USDC</span>
               </div>
               <span className="status-indicator flex items-center">
-      <span className={`dot mr-2 ${item.status === "Ongoing" ? "dot-ongoing" : "dot-closed"}`}></span>
-      <span className={`text-sm ${item.status === "Ongoing" ? "text-[#ffa500]" : "text-[#ff0000]"}`}>
-        {item.status}
-      </span>
+              <span className="flex items-center">
+  <span 
+    className={`dot mr-2 ${
+      item.status === "Ongoing" ? "dot-ongoing" :
+      item.status === "Upcoming" ? "dot-upcoming" :
+      "dot-closed"
+    }`}
+  ></span>
+  <span 
+    className={`text-sm ${
+      item.status === "Ongoing" ? "text-[#ffa500]" :
+      item.status === "Upcoming" ? "text-[#33e942]" :
+      "text-[#ff0000]"
+    }`}
+  >
+    {item.status}
+  </span>
+</span>
     </span>
             </div>
             <div className="flex justify-start gap-6 text-sm mb-8">

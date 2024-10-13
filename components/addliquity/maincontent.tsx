@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Modal, ModalContent, useDisclosure } from "@nextui-org/react";
-import { Search, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import * as React from "react"
+import * as SliderPrimitive from "@radix-ui/react-slider"
+import { cn } from "@/lib/utils"
+import { Minus, Plus } from "lucide-react"
+
 
 export default function MainContent() {
   const router = useRouter();
@@ -14,13 +18,33 @@ export default function MainContent() {
   const [amount, setAmount] = useState("0.00");
   const [selectedDistribution, setSelectedDistribution] = useState("ascend");
   const [sliderValue, setSliderValue] = useState(50);
-  const [maxPrice, setMaxPrice] = useState("6.23489");
   const [limitPerUser, setLimitPerUser] = useState("0.00")
   const [buyingPrice, setBuyingPrice] = useState("10")
   const [endPrice, setEndPrice] = useState("90")
   const [days, setDays] = useState("00")
   const [hours, setHours] = useState("00")
   const [minutes, setMinutes] = useState("00")
+  const [startingPrice, setStartingPrice] = React.useState(2.687)
+  const [maxPrice, setMaxPrice] = React.useState(6.23489)
+
+  const handleSliderChange = (value: number[]) => {
+    setStartingPrice(value[0])
+  }
+
+  const incrementMaxPrice = () => {
+    setMaxPrice((prev) => +(prev + 0.00001).toFixed(5))
+  }
+
+  const decrementMaxPrice = () => {
+    setMaxPrice((prev) => +(prev - 0.00001).toFixed(5))
+  }
+
+  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value)
+    if (!isNaN(value)) {
+      setMaxPrice(value)
+    }
+  }
 
   const inputVariants = {
     focus: { scale: 1.05, transition: { type: "spring", stiffness: 300, damping: 10 } },
@@ -33,25 +57,13 @@ export default function MainContent() {
     { id: "continuum", label: "Continuum", chart: [9, 9, 9, 9, 9, 9, 9, 9,9] },
   ];
 
-  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (/^\d*\.?\d*$/.test(value)) {
-      setMaxPrice(value);
-    }
-  };
-  const incrementMaxPrice = () => {
-    setMaxPrice((prev) => (parseFloat(prev) + 0.00001).toFixed(5));
-  };
 
-  const decrementMaxPrice = () => {
-    setMaxPrice((prev) => Math.max(0, parseFloat(prev) - 0.00001).toFixed(5));
-  };
   const isFormComplete = () => {
     return (
       amount !== "0.00" &&
       selectedDistribution !== "" &&
       sliderValue !== 0 &&
-      maxPrice !== ""
+      maxPrice !== 0
     );
   };
   return (
@@ -148,38 +160,48 @@ export default function MainContent() {
           </div>
         </div>
 
-        <div>
-          <h2 className="text-xs font-semibold mb-2">Set distribution range</h2>
-         
-          <div className="flex justify-between w-full space-x-4">
-          <div className="flex flex-col items-center ">
-          <p className="text-xs text-white text-center mb-2">
-            Starting price: 2.687 USDC per NIT
-          </p>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={sliderValue}
-              onChange={(e) => setSliderValue(parseInt(e.target.value))}
-              className="w-full bg-gray-900 border border-gray-700"
-            />
-               </div>
-            <div className="bg-black rounded px-2 py-2 flex justify-between items-center space-x-2 gap-2">
-              <button     onClick={incrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-1">+</button>
-            <div className="flex flex-col items-center ">
-              <span className="text-gray-500 text-xs">Max Price</span>
-              <input
-                type="text"
-                value={maxPrice}
-                onChange={handleMaxPriceChange}
-                className="w-24 bg-black focus:outline-none text-right"
-              />
-               </div>
-               <button  onClick={decrementMaxPrice} className=" text-xl text-white bg-black rounded-full p-1">-</button>
-            </div>
-          </div>
+        <div className="w-full  text-white p-4 flex items-start justify-between">
+      <div className="flex-1 mr-4">
+        <h2 className="text-lg font-semibold mb-2">Set distribution range</h2>
+        <p className="text-sm text-gray-400 mb-2">
+          Starting price: {startingPrice.toFixed(3)} USDC per NIT
+        </p>
+        <Slider
+          value={[startingPrice]}
+          max={maxPrice}
+          step={0.001}
+          onValueChange={handleSliderChange}
+          className="w-full"
+        />
+      </div>
+      <div className="flex flex-col items-end">
+      <span className="text-xs text-center text-gray-400 mb-1">Max Price</span>
+        <div className="flex items-center bg-zinc-800 rounded-md">
+   
+        <div className="div">
+        <button
+            className="h-8 w-8 text-gray-400"
+            onClick={decrementMaxPrice}
+          >
+            <Minus className="h-4 w-4" />
+          </button>
+          <input
+            type="number"
+            value={maxPrice.toFixed(5)}
+            onChange={handleMaxPriceChange}
+            className="w-24 h-8 bg-transparent border-none text-center text-sm"
+          />
+          <button
+            className="h-8 w-8 text-gray-400"
+            onClick={incrementMaxPrice}
+          >
+            <Plus className="h-4 w-4" />
+          </button>
         </div>
+         
+        </div>
+      </div>
+    </div>
 
 
         <motion.button
@@ -352,7 +374,7 @@ export default function MainContent() {
       ? "Please select a distribution structure"
       : sliderValue === 0
       ? "Please set a distribution range"
-      : maxPrice === ""
+      : maxPrice === 0
       ? "Please enter a valid max price"
       : ""}
   </p>
@@ -361,3 +383,24 @@ export default function MainContent() {
     </div>
   );
 }
+
+
+const Slider = React.forwardRef<
+  React.ElementRef<typeof SliderPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <SliderPrimitive.Root
+    ref={ref}
+    className={cn(
+      "relative flex w-full touch-none select-none items-center",
+      className
+    )}
+    {...props}
+  >
+    <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-zinc-800">
+      <SliderPrimitive.Range className="absolute h-full bg-gradient-to-r from-green-400 to-green-600" />
+    </SliderPrimitive.Track>
+    <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-white bg-green-500 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" />
+  </SliderPrimitive.Root>
+))
+Slider.displayName = SliderPrimitive.Root.displayName
