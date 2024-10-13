@@ -29,11 +29,11 @@ body {
 
 .buttona {
   --white: #ffe7ff;
-  --purple-100: #67e8f9; /* cyan-300 */
-  --purple-200: #22d3ee; /* cyan-400 */
-  --purple-300: #0891b2; /* cyan-600 */
-  --purple-400: #1e40af; /* blue-800 */
-  --purple-500: #1e3a8a; /* blue-900 */
+  --purple-100: #e9d5ff; /* purple-200 */
+  --purple-200: #d8b4fe; /* purple-300 */
+  --purple-300: #c084fc; /* purple-400 */
+  --purple-400: #9333ea; /* purple-600 */
+  --purple-500: #581c87; /* purple-900 */
   --radius: 18px;
   
   border-radius: var(--radius);
@@ -68,13 +68,13 @@ body {
   filter: blur(5px);
   transition: all 0.3s ease;
   box-shadow:
-    -7px 6px 0 0 rgba(103, 232, 249, 0.4),  /* cyan-300 with 40% opacity */
-    -14px 12px 0 0 rgba(34, 211, 238, 0.3), /* cyan-400 with 30% opacity */
-    -21px 18px 4px 0 rgba(8, 145, 178, 0.25), /* cyan-600 with 25% opacity */
-    -28px 24px 8px 0 rgba(30, 64, 175, 0.15), /* blue-800 with 15% opacity */
-    -35px 30px 12px 0 rgba(30, 64, 175, 0.12), /* blue-800 with 12% opacity */
-    -42px 36px 16px 0 rgba(30, 58, 138, 0.08), /* blue-900 with 8% opacity */
-    -56px 42px 20px 0 rgba(30, 58, 138, 0.05); /* blue-900 with 5% opacity */
+  -7px 6px 0 0 rgba(233, 213, 255, 0.4),   /* purple-200 with 40% opacity */
+  -14px 12px 0 0 rgba(216, 180, 254, 0.3), /* purple-300 with 30% opacity */
+  -21px 18px 4px 0 rgba(192, 132, 252, 0.25), /* purple-400 with 25% opacity */
+  -28px 24px 8px 0 rgba(147, 51, 234, 0.15),  /* purple-600 with 15% opacity */
+  -35px 30px 12px 0 rgba(126, 34, 206, 0.12), /* purple-700 with 12% opacity */
+  -42px 36px 16px 0 rgba(107, 33, 168, 0.08), /* purple-800 with 8% opacity */
+  -56px 42px 20px 0 rgba(88, 28, 135, 0.05);  /* purple-900 with 5% opacity */
 }
 
 .wrap {

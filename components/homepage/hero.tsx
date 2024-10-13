@@ -8,15 +8,15 @@ export default function HomeHero() {
     return (
       <div className="relative w-full h-[70vh] mb-4 mt-10 overflow-hidden rounded-lg">
         <img
-          src="/images/hero.PNG"
+          src="/images/kanon.PNG"
           className="absolute inset-0 w-full h-full object-fill rounded-lg"
           alt='hero'
         />
         <div className="absolute inset-0  ml-[5vw] to-transparent">
           <div className="flex flex-col justify-center h-full max-w-md p-8 text-white">
-            <h2 className=" text-[60px] font-bold">NITRO</h2>
+            <h2 className=" text-[60px] font-bold">KANNON</h2>
             <h2 className="mb-4 text-[60px] font-bold">LUNCHPAD</h2>
-            <button onClick={() => router.push('/lunch')} className="buttona bg-gradient-to-r from-cyan-300 to-blue-800">
+            <button onClick={() => router.push('/lunch')} className="buttona bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900">
       <div className="bg"></div>
       <svg
         xmlns="http://www.w3.org/2000/svg"

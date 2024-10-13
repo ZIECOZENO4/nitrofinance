@@ -83,7 +83,7 @@ export default function MainContent() {
           whileTap={{ scale: 0.95 }}
         >
           <motion.button
-            className="px-4 py-2 font-bold rounded-lg border border-teal-400 text-teal-400"
+            className="px-4 py-2 font-bold rounded-lg border border-purple-400 text-purple-400"
             whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
             whileTap={{ scale: 0.95 }}
           >
@@ -100,13 +100,13 @@ export default function MainContent() {
               type="text"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-full bg-[#121212] border border-gray-700 rounded p-6 focus:outline-none focus:border-cyan-500"
+              className="w-full bg-[#121212] border border-gray-700 rounded p-6 focus:outline-none focus:border-purple-600"
             />
             <div className="absolute right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] ">
-            <span className="mr-1 text-gray-500 mt-5">   Wallet balance: 100 NIT </span>
+            <span className="mr-1 text-gray-500 mt-8">   Wallet balance: 100 KAN </span>
               <div className='flex flex-col '>
-              <img src='/images/Capture.PNG' className='h-4 w-4 mb-1' alt='logo' />
-              <span className=" text-cyan-500 font-bold">    MAX</span>
+              <img src='/images/Capture.PNG' className='h-6 w-6 mb-1' alt='logo' />
+              <span className=" text-purple-600 font-bold">    MAX</span>
                 </div> 
             </div>
           </div>
@@ -122,11 +122,11 @@ export default function MainContent() {
   className="group flex items-center text-xs font-medium"
   whileHover={{ scale: 1.05 }}
 >
-  <span className="text-teal-400 group-hover:text-teal-600 hover:underline transition-colors duration-200">
+  <span className="text-purple-400 group-hover:text-teal-600 hover:underline transition-colors duration-200">
    Leran More
   </span>
 
-  <svg className="inline ml-1 text-teal-400 group-hover:text-teal-600 transition-colors duration-200" width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9 6.75C8.58579 6.75 8.25 6.41421 8.25 6C8.25 5.58579 8.58579 5.25 9 5.25H18C18.4142 5.25 18.75 5.58579 18.75 6V15C18.75 15.4142 18.4142 15.75 18 15.75C17.5858 15.75 17.25 15.4142 17.25 15V7.81066L6.53033 18.5303C6.23744 18.8232 5.76256 18.8232 5.46967 18.5303C5.17678 18.2374 5.17678 17.7626 5.46967 17.4697L16.1893 6.75H9Z" fill="#2dd4bf"></path> </g></svg>
+  <svg className="inline ml-1 text-purple-400 group-hover:text-teal-600 transition-colors duration-200" width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9 6.75C8.58579 6.75 8.25 6.41421 8.25 6C8.25 5.58579 8.58579 5.25 9 5.25H18C18.4142 5.25 18.75 5.58579 18.75 6V15C18.75 15.4142 18.4142 15.75 18 15.75C17.5858 15.75 17.25 15.4142 17.25 15V7.81066L6.53033 18.5303C6.23744 18.8232 5.76256 18.8232 5.46967 18.5303C5.17678 18.2374 5.17678 17.7626 5.46967 17.4697L16.1893 6.75H9Z" fill="#c084fc"></path> </g></svg>
 </motion.a>
           </div>
           <div className="grid grid-cols-3 gap-4">
@@ -135,7 +135,7 @@ export default function MainContent() {
                 key={option.id}
                 className={`p-4 rounded-lg cursor-pointer ${
                   selectedDistribution === option.id
-                    ? "border-2 border-cyan-500"
+                    ? "border-2 border-purple-600"
                     : "border border-gray-700"
                 }`}
                 onClick={() => setSelectedDistribution(option.id)}
@@ -146,7 +146,7 @@ export default function MainContent() {
                   {option.chart.map((value, index) => (
                     <motion.div
                       key={index}
-                      className="w-4 rounded bg-gradient-to-t  from-cyan-300 to-cyan-500"
+                      className="w-4 rounded bg-gradient-to-t  from-cyan-300 to-purple-600"
                       initial={{ height: 0 }}
                       animate={{ height: `${value * 10}%` }}
                       transition={{ duration: 0.5, delay: index * 0.05 }}
@@ -164,7 +164,7 @@ export default function MainContent() {
       <div className="flex-1 mr-4">
         <h2 className="text-lg font-semibold mb-2">Set distribution range</h2>
         <p className="text-sm text-gray-400 mb-2">
-          Starting price: {startingPrice.toFixed(3)} USDC per NIT
+          Starting price: {startingPrice.toFixed(3)} USDC per KAN
         </p>
         <Slider
           value={[startingPrice]}
@@ -214,11 +214,11 @@ export default function MainContent() {
         onClick={onOpen}
         >
           {/* Border */}
-          <span className="absolute inset-0 w-full h-full border-2 border-[#00ffff] rounded-lg"></span>
+          <span className="absolute inset-0 w-full h-full border-2 border-purple-600 rounded-lg"></span>
 
           {/* Gradient backgrounds */}
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00ffff] to-[#0080ff] transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 to-purple-800 transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
 
           {/* Button content */}
           <span className="relative flex items-center justify-center">
@@ -269,7 +269,7 @@ export default function MainContent() {
     type="number"
     value={limitPerUser}
     onChange={(e) => setLimitPerUser(e.target.value)}
-    className="bg-[#121212] border border-slate-800 p-6 pr-12 rounded w-full outline-none focus:outline-none focus:ring-2 focus:ring-[#00ffff] placeholder-gray-500"
+    className="bg-[#121212] border border-slate-800 p-6 pr-12 rounded w-full outline-none focus:outline-none focus:ring-2 focus:ring-purple-600 placeholder-gray-500"
   />
   <img
     src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"
@@ -333,11 +333,11 @@ export default function MainContent() {
         onClick={onOpen}
         >
           {/* Border */}
-          <span className="absolute inset-0 w-full h-full border-2 border-[#00ffff] rounded-lg"></span>
+          <span className="absolute inset-0 w-full h-full border-2 border-purple-600 rounded-lg"></span>
 
           {/* Gradient backgrounds */}
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00ffff] to-[#0080ff] transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 to-purple-800 transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
 
           {/* Button content */}
           <span className="relative flex items-center justify-center">
@@ -398,9 +398,9 @@ const Slider = React.forwardRef<
     {...props}
   >
     <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-zinc-800">
-      <SliderPrimitive.Range className="absolute h-full bg-gradient-to-r from-green-400 to-green-600" />
+      <SliderPrimitive.Range className="absolute h-full bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900" />
     </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-white bg-green-500 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" />
+    <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-white bg-purple-500 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" />
   </SliderPrimitive.Root>
 ))
 Slider.displayName = SliderPrimitive.Root.displayName

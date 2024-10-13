@@ -44,14 +44,14 @@ export default function CardContent() {
           >
             <div 
               className={`absolute inset-0  ${
-                selectedButton === button ? "text-white bg-gradient-to-r from-[#00ffff] to-[#0066ff] opacity-70" : "bg-gradient-to-r from-[#00ffff] to-[#0066ff] text-transparent bg-clip-text"
+                selectedButton === button ? "text-white bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900 opacity-70" : "bg-gradient-to-r from-purple-200 via-purple-400 to-purple-600 text-transparent bg-clip-text"
               }`}
               style={{
                 backgroundPosition: `${backgroundPosition}% 0`,
               }}
             />
             <span className={`relative z-10 ${
-              selectedButton === button ? "text-white" : "bg-gradient-to-r from-[#00ffff] to-[#0066ff] text-transparent bg-clip-text"
+              selectedButton === button ? "text-white" : "bg-gradient-to-r from-purple-200 via-purple-400 to-purple-600 text-transparent bg-clip-text"
             }`}>
               {button}
             </span>
@@ -61,7 +61,7 @@ export default function CardContent() {
           <input
             type="text"
             placeholder="Search by name, address"
-            className="w-full border border-white bg-black hover:bg-black focus:bg-black text-white rounded-md py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-[#00ffff]"
+            className="w-full border border-white bg-black hover:bg-black focus:bg-black text-white rounded-md py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-[#8a34cf]"
           />
           <motion.div
             className="absolute left-3 top-2.5 h-5 w-5 text-white"
@@ -90,11 +90,11 @@ export default function CardContent() {
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
                 <div className=" bg-black flex flex-row rounded-full mr-2">
-                <img src='/images/Capture.PNG' className='h-6 w-6 ' alt='logo' />          
-                <img src='/images/usdc.PNG' className='h-6 w-6 -ml-2' alt='logo' />      
+                <img src='/images/Capture.PNG' className='h-8 w-8 ' alt='logo' />          
+                <img src='/images/usdc.PNG' className='h-6 w-6 -ml-3 mt-1' alt='logo' />      
 
                 </div>
-                <span className="">NIT/USDC</span>
+                <span className="">KAN/USDC</span>
               </div>
               <span className="status-indicator flex items-center">
               <span className="flex items-center">
@@ -126,8 +126,8 @@ export default function CardContent() {
               <div className="flex items-center ">
                 <span>{item.locked}</span>
                 <img src='/images/Capture.PNG' className='h-4 w-4 ' alt='logo' />    
-                <div className="w-20 h-2 bg-[#004d4d] rounded-full ml-2">
-                  <div className="w-3/4 h-full bg-[#00ffff] rounded-full"></div>
+                <div className="w-20 h-2 bg-purple-900 rounded-full ml-2">
+                  <div className="w-3/4 h-full bg-purple-400 rounded-full"></div>
                 </div>
               </div>
             </div>
@@ -148,8 +148,8 @@ export default function CardContent() {
               <div className="text-right text-xs text-[#ff0000]">{item.time}</div>
               </div>
             </div>
-            <div className="w-full h-4 bg-[#004d4d] rounded-full mb-2">
-              <div className="w-3/4 h-full bg-gradient-to-r from-[#0066ff] to-[#00ffff] rounded-full"></div>
+            <div className="w-full h-4 bg-purple-900 rounded-full mb-2">
+              <div className="w-3/4 h-full bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500 rounded-full"></div>
             </div>
             <div className="flex justify-between items-center text-sm mb-4">
         

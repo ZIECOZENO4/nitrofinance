@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NitroFinance",
+  title: "Kannon",
   description: "The home of digital currency",
 };
 

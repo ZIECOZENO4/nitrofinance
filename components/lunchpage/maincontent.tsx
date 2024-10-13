@@ -17,7 +17,7 @@ interface Token {
 const tokens: Token[] = [
   { name: "ETH", fullName: "Ethereum", balance: "0.00012", icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png" },
   { name: "MONAD", fullName: "Monad", balance: "0.0000", icon: "/images/circle.PNG" },
-  { name: "NIT", fullName: "Nitro", balance: "0.0000", icon: "/images/Capture.PNG" },
+  { name: "KAN", fullName: "Kannon", balance: "0.0000", icon: "/images/Capture.PNG" },
   { name: "USDC", fullName: "USD Coin", balance: "119.000", icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png" },
 ];
 
@@ -95,7 +95,7 @@ export default function MainContent() {
           whileTap={{ scale: 0.95 }}
         >
         <motion.button
-          className="px-4 py-2 font-bold rounded-lg border border-teal-400 text-teal-400"
+          className="px-4 py-2 font-bold rounded-lg border border-purple-600 text-purple-600"
           whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
           whileTap={{ scale: 0.95 }}
         >
@@ -278,11 +278,11 @@ export default function MainContent() {
   className="group flex items-center text-xs font-medium"
   whileHover={{ scale: 1.05 }}
 >
-  <span className="text-teal-400 group-hover:text-teal-600 hover:underline transition-colors duration-200">
+  <span className="text-purple-400 group-hover:text-purple-600 hover:underline transition-colors duration-200">
     Request for custom
   </span>
 
-  <svg className="inline ml-1 text-teal-400 group-hover:text-teal-600 transition-colors duration-200" width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9 6.75C8.58579 6.75 8.25 6.41421 8.25 6C8.25 5.58579 8.58579 5.25 9 5.25H18C18.4142 5.25 18.75 5.58579 18.75 6V15C18.75 15.4142 18.4142 15.75 18 15.75C17.5858 15.75 17.25 15.4142 17.25 15V7.81066L6.53033 18.5303C6.23744 18.8232 5.76256 18.8232 5.46967 18.5303C5.17678 18.2374 5.17678 17.7626 5.46967 17.4697L16.1893 6.75H9Z" fill="#2dd4bf"></path> </g></svg>
+  <svg className="inline ml-1 text-purple-400 group-hover:text-purple-600 transition-colors duration-200" width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9 6.75C8.58579 6.75 8.25 6.41421 8.25 6C8.25 5.58579 8.58579 5.25 9 5.25H18C18.4142 5.25 18.75 5.58579 18.75 6V15C18.75 15.4142 18.4142 15.75 18 15.75C17.5858 15.75 17.25 15.4142 17.25 15V7.81066L6.53033 18.5303C6.23744 18.8232 5.76256 18.8232 5.46967 18.5303C5.17678 18.2374 5.17678 17.7626 5.46967 17.4697L16.1893 6.75H9Z" fill="#9333ea"></path> </g></svg>
 </motion.a>
           </div>
           <div className="flex gap-2 justify-between bg-[#121212] border border-slate-800  p-2 rounded-lg shadow-md" role="tablist">
@@ -321,7 +321,7 @@ export default function MainContent() {
   type="text"
   value={activePrice}
   onChange={(e) => setActivePrice(e.target.value)}
-  className="bg-[#121212] border border-slate-800 p-6 rounded w-full outline-none focus:outline-none focus:ring-2 focus:ring-[#00ffff] placeholder-gray-500"
+  className="bg-[#121212] border border-slate-800 p-6 rounded w-full outline-none focus:outline-none focus:ring-2 focus:ring-purple-600 placeholder-gray-500"
   placeholder="0.00"
 />
         </div>
@@ -336,11 +336,11 @@ export default function MainContent() {
   onClick={() => router.push('/addliquidity')}
 >
   {/* Border */}
-  <span className="absolute inset-0 w-full h-full border-2 border-[#00ffff] rounded-lg"></span>
+  <span className="absolute inset-0 w-full h-full border-2 border-purple-600 rounded-lg"></span>
   
   {/* Gradient backgrounds */}
-  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
-  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00ffff] to-[#0080ff] transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
+  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-300 to-purple-400 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
+  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
   
   {/* Button content */}
   <span className="relative flex items-center justify-center">
