@@ -46,6 +46,11 @@ export default function ExactPoolDistributionGraph() {
     setGraphHeight(260 * newScale) // Adjust the graph height based on the scale
   }
 
+  // Function to generate a fake price
+  const generateFakePrice = () => {
+    return (Math.random() * 100 + 1000).toFixed(2)
+  }
+
   return (
     <div className="bg-black text-white p-4 w-full">
       <div className="flex justify-between items-center mb-10">
@@ -62,10 +67,10 @@ export default function ExactPoolDistributionGraph() {
         </div>
       </div>
 
-      <div className="relative mb-10"style={{ height: `${graphHeight + 24}px` }}>
+      <div className="relative mb-10" style={{ height: `${graphHeight + 24}px` }}>
         <div className="absolute top-0 right-0 space-x-2">
-          <button onClick={() => adjustScale(0.1)} className="bg-gray-800 rounded-full  text-white px-2 py-1 text-sm">+</button>
-          <button onClick={() => adjustScale(-0.1)} className="bg-gray-800  rounded-full text-white px-2 py-1 text-sm">-</button>
+          <button onClick={() => adjustScale(0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-sm">+</button>
+          <button onClick={() => adjustScale(-0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-sm">-</button>
         </div>
         {mockData.map((item, index) => (
           <motion.div
@@ -82,32 +87,38 @@ export default function ExactPoolDistributionGraph() {
             onHoverEnd={() => setHoveredBar(null)}
           >
             <div
-              className="absolute bg-gradient-to-b from-green-400 via-slate-600 to-black/50  bottom-0 w-full rounded-t-md"
+              className="absolute bg-gradient-to-b from-green-400 via-slate-600 to-black/50 bottom-0 w-full rounded-t-md"
               style={{
                 height: `${item.usdc}%`,
-               
               }}
             />
             <div
               className="absolute bottom-0 w-full bg-gradient-to-b from-purple-400 via-slate-600 to-black/50 rounded-t-md"
               style={{
                 height: `${item.nit}%`,
-              
                 bottom: `${item.usdc}%`,
               }}
             />
-            {hoveredBar === index && (
-              <motion.div
-                className="absolute bottom-full mb-2 z-50 bg-gray-800 text-white p-2 rounded text-xs whitespace-nowrap"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                USDC: {item.usdc.toFixed(2)}%<br />
-                KAN: {item.nit.toFixed(2)}%
-              </motion.div>
-            )}
           </motion.div>
         ))}
+        {hoveredBar !== null && (
+          <motion.div
+            className="absolute z-50 bg-gray-800 bg-opacity-50 gap-4  text-white p-4 rounded text-xs whitespace-nowrap"
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{
+              left: `${hoveredBar * 2.5 * scale}%`,
+              bottom: '100%',
+              transform: 'translateX(-50%)',
+              marginBottom: '5px'
+            }}
+          >
+            <div className='my-1'>USDC: {mockData[hoveredBar].usdc.toFixed(2)}%</div>
+            <div className='my-1'>KAN: {mockData[hoveredBar].nit.toFixed(2)}%</div>
+            <div className='my-1'>USDC Price: ${generateFakePrice()}</div>
+            <div className='my-1'>KAN Price: ${generateFakePrice()}</div>
+          </motion.div>
+        )}
       </div>
 
       <div className="flex justify-between mt-4 text-xs text-gray-400">
