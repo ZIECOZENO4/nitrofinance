@@ -24,8 +24,19 @@ const styles = {
   cursorPointer: `mr-5 cursor-pointer`,
 };
 
-const  HomeNavBar = () => {
-
+const  SecondNavBar = () => {
+  const [activeItem, setActiveItem] = useState<ActiveItem>(null);
+    const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+    const currentPath = usePathname();
+  
+    const navItems: NavItem[] = [
+      { name: "Home", path: "/" },
+      { name: "Create", path: "/create" },
+      { name: "Liquidity", path: "/liquidity" },
+      { name: "Listing", path: "/listing" },
+      { name: "Comment", path: "/website-comment" },
+      { name: "Contact", path: "/contact" }
+    ];
 
   return (
     <div className='flex-row justify-between  h-20 flex md:gap-[80px] w-full p-[20px] md:px-[30px] px-[20px] sticky top-0 z-50 fixed'>
@@ -80,4 +91,4 @@ const  HomeNavBar = () => {
   );
 };
 
-export default  HomeNavBar;
+export default  SecondNavBar;

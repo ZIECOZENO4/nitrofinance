@@ -50,19 +50,7 @@ export default function MainContent() {
     }
     onClose();
   };
-  const handleTokenSelect2 = (token: Token) => {
-    if (isSelectingBase) {
-      setBaseToken(token);
-    } else {
-      if (token.name !== baseToken?.name) {
-        setQuoteToken(token);
-      } else {
-        // Show an error message or handle this case
-        console.error("Quote token must be different from base token");
-      }
-    }
-    onClose();
-  };
+  
   const openTokenModal = (isBase: boolean) => {
     setIsSelectingBase(isBase);
     onOpen();

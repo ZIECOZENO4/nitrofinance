@@ -74,10 +74,20 @@ export default function ExactPoolDistributionGraph() {
         </div>
       </div>
 
-      <div className="relative mb-10" style={{ height: `${graphHeight + 24}px` }}>
-        <div className="absolute top-0 right-0 space-x-2">
-          <button onClick={() => adjustScale(0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-xl">+</button>
-          <button onClick={() => adjustScale(-0.1)} className="bg-gray-800 rounded-full text-white px-2 py-1 text-xl">-</button>
+      <div className="relative mb-10 z-50" style={{ height: `${graphHeight + 24}px` }}>
+        <div className="absolute top-0 right-0 flex space-x-2 mb-4">
+          <div onClick={() => adjustScale(0.1)} className="flex items-center justify-center w-8 h-8 cursor-pointer">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="30" fill="black" stroke="white" strokeWidth="2" />
+              <path d="M32 20v24M20 32h24" stroke="white" strokeWidth="4" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div onClick={() => adjustScale(-0.1)} className="flex items-center justify-center w-8 h-8 cursor-pointer">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="30" fill="black" stroke="white" strokeWidth="2" />
+              <path d="M20 32h24" stroke="white" strokeWidth="4" strokeLinecap="round" />
+            </svg>
+          </div>
         </div>
         {mockData.map((item, index) => (
           <motion.div
