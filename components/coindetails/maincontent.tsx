@@ -41,7 +41,7 @@ export default function CoinDetailsComponent() {
         <td className="py-4 px-4 border-r border-gray-700">
           <div className="flex items-center space-x-2">
             <span className="text-white">40</span>
-            <img src='/images/Capture.PNG' className='h-5 w-5 object-contain' alt='Token logo' />
+            <img src='/images/Capture.PNG' className='h-8 w-8 object-contain' alt='Token logo' />
           </div>
         </td>
         <td className="py-4 px-4">
@@ -55,9 +55,9 @@ export default function CoinDetailsComponent() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 rounded-md border border-cyan-600 text-white font-bold"
+              className="w-full py-3 rounded-md border border-purple-600 text-white font-bold"
               style={{
-                background: "linear-gradient(to right, #4facfe 0%, #00f2fe 100%)",
+                background: "linear-gradient(to right, #c084fc 0%, #9333ea 100%)",
               }}
             >
               Claim
@@ -74,11 +74,11 @@ export default function CoinDetailsComponent() {
             <input
               type="text"
       placeholder="0.00"
-              className="w-full bg-[#121212] border border-gray-700 rounded p-6 focus:outline-none focus:border-cyan-500"
+              className="w-full bg-[#121212] border border-gray-700 rounded p-6 focus:outline-none focus:border-purple-500"
             />
             <div className="absolute right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-sm">
             <img src='/images/Capture.PNG' className='h-4 w-4 mb-1' alt='logo' />
-              <span className=" text-cyan-500 font-bold">   NIT</span>
+              <span className=" text-purple-500 font-bold">   KAN</span>
             </div>
           </div>
             <div className="flex justify-between text-xs text-gray-400 mb-6">
@@ -89,14 +89,15 @@ export default function CoinDetailsComponent() {
             <div className="flex justify-between items-center mt-4 ">
               <div className="text-sm font-bold">10 - 100</div>
 
-              <div className="bg-gray-800 px-2 gap-4 py-1 rounded-full text-sm">
-                <span className="text-blue-400 mr-1">◈</span> NIT
-              </div>
+              <div className=" right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-sm">
+            <img src='/images/Capture.PNG' className='h-4 w-4 mb-1' alt='logo' />
+              <span className=" text-purple-500 font-bold">   KAN</span>
+            </div>
             </div>
             <hr className="mb-4 mt-1"/>
             <div className="my-2">
                 <div className="text-gray-400 text-xs flex justify-between"><p>Current price:</p>
-                <p className="text-gray-100 text-sm">10 USDC per NIT</p></div>
+                <p className="text-gray-100 text-sm">10 USDC per KAN</p></div>
               </div>
               <div className="my-2">
                 <div className="text-gray-400 text-xs flex justify-between"><p>Available:</p>
@@ -128,7 +129,7 @@ export default function CoinDetailsComponent() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 rounded-md text-white font-bold bg-teal-500"
+              className="w-full py-3 rounded-md text-white font-bold bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800"
             >
               Buy
             </motion.button>

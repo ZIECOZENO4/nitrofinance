@@ -217,8 +217,8 @@ export default function MainContent() {
           <span className="absolute inset-0 w-full h-full border-2 border-purple-600 rounded-lg"></span>
 
           {/* Gradient backgrounds */}
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 to-purple-800 transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-200 to-purple-400 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
 
           {/* Button content */}
           <span className="relative flex items-center justify-center">
@@ -330,14 +330,14 @@ export default function MainContent() {
           <motion.button
          className={`relative w-full py-4 px-8 text-white font-medium text-lg rounded-lg overflow-hidden group`}
   
-        onClick={onOpen}
+        onClick={() => router.push('/coindetails')}
         >
           {/* Border */}
           <span className="absolute inset-0 w-full h-full border-2 border-purple-600 rounded-lg"></span>
 
           {/* Gradient backgrounds */}
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 to-purple-800 transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-200 to-purple-500 transition-all duration-300 ease-out transform group-hover:scale-105"></span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-300 to-purple-600 transition-all duration-300 ease-out transform scale-105 group-hover:scale-100"></span>
 
           {/* Button content */}
           <span className="relative flex items-center justify-center">

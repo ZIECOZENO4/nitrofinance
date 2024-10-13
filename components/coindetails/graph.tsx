@@ -38,34 +38,34 @@ const mockData = generateMockData()
 export default function ExactPoolDistributionGraph() {
   const [hoveredBar, setHoveredBar] = useState<number | null>(null)
   const [scale, setScale] = useState<number>(1)
-  const [graphHeight, setGraphHeight] = useState<number>(160) // Initial height of 40 * 4
+  const [graphHeight, setGraphHeight] = useState<number>(260) // Initial height of 40 * 4
 
   const adjustScale = (adjustment: number) => {
     const newScale = Math.max(0.5, Math.min(2, scale + adjustment))
     setScale(newScale)
-    setGraphHeight(160 * newScale) // Adjust the graph height based on the scale
+    setGraphHeight(260 * newScale) // Adjust the graph height based on the scale
   }
 
   return (
     <div className="bg-black text-white p-4 w-full">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-bold">Pool Distribution</h1>
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-sm font-bold">Pool Distribution</h1>
         <div className="flex items-center space-x-4">
           <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full bg-[#2dd4bf] mr-2"></div>
+            <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
             <span className="text-sm">USDC</span>
           </div>
           <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full bg-[#3b82f6] mr-2"></div>
-            <span className="text-sm">NIT</span>
+            <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+            <span className="text-sm">KAN</span>
           </div>
         </div>
       </div>
 
-      <div className="relative mb-4" style={{ height: `${graphHeight}px` }}>
+      <div className="relative mb-10"style={{ height: `${graphHeight + 24}px` }}>
         <div className="absolute top-0 right-0 space-x-2">
-          <button onClick={() => adjustScale(0.1)} className="bg-gray-800 text-white px-2 py-1 rounded text-sm">+</button>
-          <button onClick={() => adjustScale(-0.1)} className="bg-gray-800 text-white px-2 py-1 rounded text-sm">-</button>
+          <button onClick={() => adjustScale(0.1)} className="bg-gray-800 rounded-full  text-white px-2 py-1 text-sm">+</button>
+          <button onClick={() => adjustScale(-0.1)} className="bg-gray-800  rounded-full text-white px-2 py-1 text-sm">-</button>
         </div>
         {mockData.map((item, index) => (
           <motion.div
@@ -82,28 +82,28 @@ export default function ExactPoolDistributionGraph() {
             onHoverEnd={() => setHoveredBar(null)}
           >
             <div
-              className="absolute bottom-0 w-full rounded-t-md"
+              className="absolute bg-gradient-to-b from-green-400 via-slate-600 to-black/50  bottom-0 w-full rounded-t-md"
               style={{
                 height: `${item.usdc}%`,
-                background: '#2dd4bf',
+               
               }}
             />
             <div
-              className="absolute bottom-0 w-full rounded-t-md"
+              className="absolute bottom-0 w-full bg-gradient-to-b from-purple-400 via-slate-600 to-black/50 rounded-t-md"
               style={{
                 height: `${item.nit}%`,
-                background: '#3b82f6',
+              
                 bottom: `${item.usdc}%`,
               }}
             />
             {hoveredBar === index && (
               <motion.div
-                className="absolute bottom-full mb-2 bg-gray-800 text-white p-2 rounded text-xs whitespace-nowrap"
+                className="absolute bottom-full mb-2 z-50 bg-gray-800 text-white p-2 rounded text-xs whitespace-nowrap"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 USDC: {item.usdc.toFixed(2)}%<br />
-                NIT: {item.nit.toFixed(2)}%
+                KAN: {item.nit.toFixed(2)}%
               </motion.div>
             )}
           </motion.div>
