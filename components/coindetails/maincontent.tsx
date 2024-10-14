@@ -88,7 +88,7 @@ export default function CoinDetailsComponent() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 rounded-md border border-purple-600 text-white font-bold"
+              className="w-full py-3 rounded-md border text-xl border-purple-600 text-white font-bold"
               style={{
                 background: "linear-gradient(to right, #c084fc 0%, #9333ea 100%)",
               }}
@@ -252,7 +252,7 @@ export default function CoinDetailsComponent() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 rounded-md text-white font-bold bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800"
+              className="w-full py-3 rounded-md text-xl text-white font-bold bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800"
             >
               Buy
             </motion.button>
