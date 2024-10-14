@@ -67,7 +67,7 @@ export default function MainContent() {
     );
   };
   return (
-    <div className=" text-white p-6  max-w-3xl mt-10 mx-auto">
+    <div className=" text-white md:p-6 w-full md:max-w-3xl mt-10 mx-auto">
       <div className="flex justify-between items-center mb-12">
         <motion.button
           className="flex items-center text-xl text-slate-400"
@@ -119,7 +119,7 @@ export default function MainContent() {
             </h2>
             <motion.a
   href="#"
-  className="group flex items-center text-xl font-medium"
+  className="group flex items-center text-sm md:text-xl font-medium"
   whileHover={{ scale: 1.05 }}
 >
   <span className="text-purple-400 group-hover:text-purple-600 hover:underline transition-colors duration-200">
@@ -129,7 +129,7 @@ export default function MainContent() {
   <svg className="inline ml-1 text-purple-400 group-hover:text-purple-600 transition-colors duration-200" width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9 6.75C8.58579 6.75 8.25 6.41421 8.25 6C8.25 5.58579 8.58579 5.25 9 5.25H18C18.4142 5.25 18.75 5.58579 18.75 6V15C18.75 15.4142 18.4142 15.75 18 15.75C17.5858 15.75 17.25 15.4142 17.25 15V7.81066L6.53033 18.5303C6.23744 18.8232 5.76256 18.8232 5.46967 18.5303C5.17678 18.2374 5.17678 17.7626 5.46967 17.4697L16.1893 6.75H9Z" fill="#c084fc"></path> </g></svg>
 </motion.a>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {distributionOptions.map((option) => (
               <motion.div
                 key={option.id}
@@ -160,7 +160,7 @@ export default function MainContent() {
           </div>
         </div>
 
-        <div className="w-full  text-white p-4 flex items-start justify-between">
+        <div className="w-full  text-white p-4 flex md:flex-row flex-col items-start md:justify-between">
       <div className="flex-1 mr-4">
         <h2 className="text-lg font-semibold mb-2">Set distribution range</h2>
         <p className="text-xl text-gray-400 mb-2">
@@ -174,9 +174,9 @@ export default function MainContent() {
           className="w-full"
         />
       </div>
-      <div className="flex flex-col items-end">
-      <span className="text-xl text-center text-gray-400 mb-1">Max Price</span>
-        <div className="flex items-center bg-zinc-800 rounded-md">
+      <div className="flex flex-col items-end mt-4 md:mt-0">
+      <span className="text-xl md:text-center text-gray-400 mb-1">Max Price</span>
+        <div className="flex items-center align-middle bg-zinc-800 rounded-md">
    
         <div className="div">
         <button

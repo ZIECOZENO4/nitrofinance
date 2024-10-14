@@ -66,7 +66,7 @@ export default function MainContent() {
     return baseToken && quoteToken && baseToken !== quoteToken && activePrice !== "0.0" && activePrice !== "";
   };
   return (
-    <div className=" text-white p-6  max-w-3xl mt-10 mx-auto">
+    <div className=" text-white md:p-6 w-full md:max-w-3xl mt-4 md:mt-10 mx-auto">
       <div className="flex justify-between items-center mb-12">
         <motion.button
           className="flex items-center text-xl text-slate-400"
@@ -263,7 +263,7 @@ export default function MainContent() {
             <label className="text-xl ">Preset</label>
      <motion.a
   href="#"
-  className="group flex items-center text-xl font-medium"
+  className="group flex items-center text-md md:text-xl font-medium"
   whileHover={{ scale: 1.05 }}
 >
   <span className="text-purple-400 group-hover:text-purple-600 hover:underline transition-colors duration-200">
@@ -296,7 +296,7 @@ export default function MainContent() {
     >
       <div className="flex flex-col items-center justify-center h-full">
         <div className="text-lg font-semibold">{preset.percentage}</div>
-        <div className="text-xl text-gray-500">Fee: {preset.fee}</div>
+        <div className="text-sm md:text-xl text-gray-500">Fee: {preset.fee}</div>
       </div>
     </motion.div>
   ))}

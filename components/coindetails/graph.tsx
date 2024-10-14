@@ -138,7 +138,7 @@ export default function ExactPoolDistributionGraph() {
         )}
       </div>
 
-      <div className="flex justify-between mt-4 text-sm md:text-xl text-gray-400">
+      <div className="flex justify-between mb-4 md:my-4  text-sm md:text-xl text-gray-400">
         {[mockData[0], mockData[8], mockData[16], mockData[24], mockData[32], mockData[39]].map((item, index) => (
           <span key={index}>{item.value}</span>
         ))}

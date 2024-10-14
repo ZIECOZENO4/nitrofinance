@@ -15,7 +15,7 @@ export default function HomeHero() {
         <div className="absolute inset-0  md:ml-[5vw] mx-4 to-transparent">
           <div className="flex flex-col justify-center h-full max-w-md p-8 text-white">
             <h2 className=" md:text-[60px] text-4xl font-bold">KANNON</h2>
-            <h2 className="md:mb-4 mb-[100px]  md:text-[60px] text-4xl md:-mt-[2rem] font-bold">LAUNCHPAD</h2>
+            <h2 className=" mb-[100px]  md:text-[60px] text-4xl font-bold">LAUNCHPAD</h2>
             <button onClick={() => router.push('/lunch')} className="buttona bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900">
       <div className="bg"></div>
       <svg

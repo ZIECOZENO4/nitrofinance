@@ -64,7 +64,7 @@ export default function SwapForm() {
         draggable: true,
         progress: undefined,
         style: {
-          background: 'linear-gradient(to top, #121212, #7e22ce)',
+          background: 'linear-gradient(to top, #121212, #121212)',
           color: 'white',
         },
       }
@@ -220,9 +220,9 @@ export default function SwapForm() {
         </ModalContent>
       </Modal>
   <div className="absolute left-1/2 top-[40%] -mt-4 transform -translate-x-1/2 -translate-y-1/2 z-10">
-    <button className="rounded-full bg-[#121212] border p-4 border-slate-800">
-      <RefreshCcw className="h-10 w-10 text-purple-600" />
-    </button>
+  <button className="rounded-full bg-[#121212] border p-4 border-slate-800">
+  <RefreshCcw className="h-10 w-10 text-purple-600 animate-spin [animation-duration:4s]" />
+</button>
   </div>
   
   <motion.div variants={inputVariants} whileFocus="focus" initial="blur" animate="blur">
