@@ -35,7 +35,7 @@ const  SecondNavBar = () => {
     ];
 
   return (
-    <div className='flex-row justify-between  h-20 flex md:gap-[80px] w-full p-[20px] md:px-[30px] px-[20px] sticky top-0 z-50 fixed'>
+    <div className='flex-row justify-between  h-20 flex md:gap-[80px] w-full py-[10px] md:py-[20px] sticky top-0 z-50 fixed'>
   <div className="gap-2 align-middle items-center text-center flex flex-row">
   <Link href="/" className="flex flex-row ">
  <img src='/images/Capture.PNG' className='h-8 w-8 mr-1' alt='logo' />

@@ -8,7 +8,7 @@ export default function HomeHero() {
     return (
       <div className="relative w-full h-[70vh] mb-4 mt-4 md:mt-10 overflow-hidden rounded-lg">
         <img
-          src="/images/kannon.PNG"
+          src="/images/test.jpg"
           className="absolute inset-0 w-full h-full object-fill rounded-lg"
           alt='hero'
         />
