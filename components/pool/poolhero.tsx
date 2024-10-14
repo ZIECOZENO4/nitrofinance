@@ -1,8 +1,8 @@
 import { LockIcon, TrendingUpIcon, SearchIcon, PlusIcon } from "lucide-react"
 
-export default function Component() {
+export default function PoolHero() {
   return (
-    <div className="bg-black text-white min-h-screen p-8">
+    <div className="bg-black text-white w-full h-[70vh] mb-4 mt-4 md:mt-10 overflow-hidden rounded-lg ">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-start mb-16">
           <div className="flex items-center space-x-3">
