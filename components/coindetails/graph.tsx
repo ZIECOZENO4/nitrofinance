@@ -121,7 +121,7 @@ export default function ExactPoolDistributionGraph() {
         {hoveredBar !== null && (
           <motion.div
             ref={tooltipRef}
-            className="absolute z-50 bg-gray-800 bg-opacity-50 text-white p-4 rounded text-xl whitespace-nowrap"
+            className="absolute z-50 bg-gray-800 bg-opacity-50 text-white p-4 rounded text-md md:text-xl whitespace-nowrap"
             initial={{ opacity: 0, x: 0 }}
             animate={{ opacity: 1, x: 5 }}
             style={{
@@ -130,15 +130,15 @@ export default function ExactPoolDistributionGraph() {
               transform: `translateY(50%)`,
             }}
           >
-            <div className='my-3'>USDC: {mockData[hoveredBar].usdc.toFixed(2)}%</div>
-            <div className='my-3'>KAN: {mockData[hoveredBar].nit.toFixed(2)}%</div>
-            <div className='my-3'>USDC Price: ${generateFakePrice()}</div>
-            <div className='my-3'>KAN Price: ${generateFakePrice()}</div>
+            <div className='my-1 md:my-3'>USDC: {mockData[hoveredBar].usdc.toFixed(2)}%</div>
+            <div className='my-1 md:my-3'>KAN: {mockData[hoveredBar].nit.toFixed(2)}%</div>
+            <div className='my-1 md:my-3'>USDC Price: ${generateFakePrice()}</div>
+            <div className='my-1 md:my-3'>KAN Price: ${generateFakePrice()}</div>
           </motion.div>
         )}
       </div>
 
-      <div className="flex justify-between mt-4 text-xl text-gray-400">
+      <div className="flex justify-between mt-4 text-sm md:text-xl text-gray-400">
         {[mockData[0], mockData[8], mockData[16], mockData[24], mockData[32], mockData[39]].map((item, index) => (
           <span key={index}>{item.value}</span>
         ))}

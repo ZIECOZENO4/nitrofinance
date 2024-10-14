@@ -18,7 +18,7 @@ const styles = {
   badge: `rounded-full bg-blue-600 h-1 w-1 absolute bottom-5 right-0 top-1 ring-4`,
   navItem: `relative mr-1 cursor-pointer hover:opacity-60`,
   nav: `flex justify-center items-center gap-[20px]`,
-  headerWrapper: `md:flex md:justify-between h-full max-w-screen-xl mx-auto px-4 hidden`,
+  headerWrapper: `flex justify-between h-full max-w-screen-xl mx-auto px-4 `,
   inputContainer: `flex items-center justify-center p-2 rounded `,
   input: `bg-transparent outline-none text-white w-70 ml-3`,
   cursorPointer: `mr-5 cursor-pointer`,

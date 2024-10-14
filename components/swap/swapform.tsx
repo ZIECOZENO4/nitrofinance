@@ -56,7 +56,7 @@ export default function SwapForm() {
         You are swapping {baseAmount} {baseToken?.name} for {quoteAmount} {quoteToken?.name}
       </div>,
       {
-        position: "top-center",
+        position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

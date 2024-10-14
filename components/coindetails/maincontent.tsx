@@ -189,7 +189,7 @@ export default function CoinDetailsComponent() {
           </ModalContent>
         </Modal>
       </div>
-            <div className="flex justify-between text-xl text-gray-400 mb-6">
+            <div className="flex md:flex-row flex-col justify-between text-xl text-gray-400 mb-6">
               <div>Buy limit: 6000 <span className="text-blue-400">○</span></div>
               <div>Wallet Balance: 0.00012</div>
             </div>

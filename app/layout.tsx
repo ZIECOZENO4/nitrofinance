@@ -27,7 +27,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`${darkerGrotesque.variable} antialiased bg-black px-10 md:px-[3vw] text-white`}
+        className={`${darkerGrotesque.variable} antialiased bg-black px-4 md:px-[3vw] text-white`}
       >
         <Providers>
         {children}

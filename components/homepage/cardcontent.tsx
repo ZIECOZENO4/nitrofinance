@@ -33,7 +33,8 @@ export default function CardContent() {
 
   return (
     <div className="bg-black my-6 text-white ">
-      <div className="mb-6 flex items-center space-x-4 gap-6 relative">
+      <div className="mb-6 flex md:flex-row flex-col items-center space-x-4 gap-6 relative">
+        <div className="flex">
         {buttons.map((button) => (
           <motion.button
             key={button}
@@ -57,7 +58,9 @@ export default function CardContent() {
             </span>
           </motion.button>
         ))}
-        <div className="relative flex-grow">
+        </div>
+       
+        <div className="relative w-full flex-grow">
           <input
             type="text"
             placeholder="Search by name, address"
