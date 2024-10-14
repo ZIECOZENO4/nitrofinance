@@ -238,8 +238,16 @@ export default function CoinDetailsComponent() {
               </thead>
               <tbody>
                 <tr>
-                  <td className="py-2 px-4 border-r border-gray-700">0%</td>
-                  <td className="py-2 px-4">100%</td>
+                  <td className="py-2 px-4 border-r border-gray-700"><input
+            type="number"
+   placeholder="1"
+            className="w-8 h-8 bg-transparent border-none text-center text-xl"
+          />%</td>
+                  <td className="py-2 px-4"><input
+            type="number"
+   placeholder="100"
+            className="w-12 h-8 bg-transparent border-none text-center text-xl"
+          />%</td>
                 </tr>
               </tbody>
             </table>

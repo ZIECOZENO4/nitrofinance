@@ -292,8 +292,18 @@ export default function MainContent() {
               </thead>
               <tbody>
                 <tr>
-                  <td className="py-2 px-4 border-r border-gray-700">{buyingPrice}%</td>
-                  <td className="py-2 px-4">{endPrice}%</td>
+                  <td className="py-2 px-4 border-r border-gray-700">      <input
+            type="number"
+           min={1}
+   placeholder="1"
+            className="w-12 h-8 bg-transparent border-none text-center text-xl"
+          />%</td>
+                  <td className="py-2 px-4"><input
+            type="number"
+           max={100}
+              placeholder="100"
+            className="w-12 h-8 bg-transparent border-none text-center text-xl"
+          />%</td>
                 </tr>
               </tbody>
             </table>
@@ -313,9 +323,21 @@ export default function MainContent() {
               </thead>
               <tbody>
                 <tr>
-                  <td className="py-2 px-4 border-r border-gray-700">{days}</td>
-                  <td className="py-2 px-4 border-r border-gray-700">{hours}</td>
-                  <td className="py-2 px-4">{minutes}</td>
+                  <td className="py-2 px-4 border-r border-gray-700"><input
+            type="number"
+   placeholder="00"
+            className="w-12 h-8 bg-transparent border-none text-center text-xl"
+          /></td>
+                  <td className="py-2 px-4 border-r border-gray-700"><input
+            type="number"
+      placeholder="00"
+            className="w-12 h-8 bg-transparent border-none text-center text-xl"
+          /></td>
+                  <td className="py-2 px-4"><input
+            type="number"
+      placeholder="00"
+            className="w-12 h-8 bg-transparent border-none text-center text-xl"
+          /></td>
                 </tr>
               </tbody>
             </table>
