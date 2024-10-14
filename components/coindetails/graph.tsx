@@ -61,15 +61,15 @@ export default function ExactPoolDistributionGraph() {
   return (
     <div className="bg-black text-white p-4 w-full">
       <div className="flex justify-between items-center mb-10">
-        <h1 className="text-sm font-bold">Pool Distribution</h1>
+        <h1 className="text-xl font-bold">Pool Distribution</h1>
         <div className="flex items-center space-x-4">
           <div className="flex items-center">
             <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
-            <span className="text-sm">USDC</span>
+            <span className="text-xl">USDC</span>
           </div>
           <div className="flex items-center">
             <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
-            <span className="text-sm">KAN</span>
+            <span className="text-xl">KAN</span>
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@ export default function ExactPoolDistributionGraph() {
         {hoveredBar !== null && (
           <motion.div
             ref={tooltipRef}
-            className="absolute z-50 bg-gray-800 bg-opacity-50 text-white p-4 rounded text-xs whitespace-nowrap"
+            className="absolute z-50 bg-gray-800 bg-opacity-50 text-white p-4 rounded text-xl whitespace-nowrap"
             initial={{ opacity: 0, x: 0 }}
             animate={{ opacity: 1, x: 5 }}
             style={{
@@ -138,7 +138,7 @@ export default function ExactPoolDistributionGraph() {
         )}
       </div>
 
-      <div className="flex justify-between mt-4 text-xs text-gray-400">
+      <div className="flex justify-between mt-4 text-xl text-gray-400">
         {[mockData[0], mockData[8], mockData[16], mockData[24], mockData[32], mockData[39]].map((item, index) => (
           <span key={index}>{item.value}</span>
         ))}

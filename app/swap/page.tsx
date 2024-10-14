@@ -1,11 +1,12 @@
+import SecondNavBar from "@/components/swap/SecondNav";
+import SwapForm from "@/components/swap/swapform";
 
-import HomeNavBar from "@/components/homepage/navbar";
 
 export default function Lunch() {
   return (
     <div className="div">
-      <HomeNavBar />
-      second phase
+      <SecondNavBar />
+     <SwapForm />
     </div>
   );
 }

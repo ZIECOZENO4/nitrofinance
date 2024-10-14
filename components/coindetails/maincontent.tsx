@@ -58,9 +58,9 @@ export default function CoinDetailsComponent() {
   <table className="w-full border-collapse">
     <thead>
       <tr className="border-b border-gray-700">
-        <th className="text-left text-xs text-gray-400 font-normal py-3 px-4 border-r border-gray-700">Amount In</th>
-        <th className="text-left text-xs text-gray-400 font-normal py-3 px-4 border-r border-gray-700">Amount Out</th>
-        <th className="text-left text-xs text-gray-400 font-normal py-3 px-4">Countdown</th>
+        <th className="text-left text-xl text-gray-400 font-normal py-3 px-4 border-r border-gray-700">Amount In</th>
+        <th className="text-left text-xl text-gray-400 font-normal py-3 px-4 border-r border-gray-700">Amount Out</th>
+        <th className="text-left text-xl text-gray-400 font-normal py-3 px-4">Countdown</th>
       </tr>
     </thead>
     <tbody>
@@ -112,7 +112,7 @@ export default function CoinDetailsComponent() {
         <motion.div 
           onClick={onOpen}
           whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
-          className="absolute right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-sm"
+          className="absolute right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-xl"
         >
           {selectedToken ? (
             <>
@@ -141,7 +141,7 @@ export default function CoinDetailsComponent() {
                     className=""
                   >
                     <div className="p-4 flex justify-between items-center border-b border-gray-700">
-                      <h2 className="text-white text-sm font-semibold">Select token</h2>
+                      <h2 className="text-white text-xl font-semibold">Select token</h2>
                       <button onClick={onClose} className="text-gray-400  hover:text-white">
                         <X size={20} />
                       </button>
@@ -172,11 +172,11 @@ export default function CoinDetailsComponent() {
                               <div className="flex items-center">
                                 <img src={token.icon} alt={token.name} className="w-8 h-8 mr-3" />
                                 <div>
-                                  <div className="text-white font-medium text-xs">{token.name}</div>
+                                  <div className="text-white font-medium text-xl">{token.name}</div>
                                   <div className="text-gray-400 text-[8px]">{token.fullName}</div>
                                 </div>
                               </div>
-                              <div className="text-white text-xs">{token.balance}</div>
+                              <div className="text-white text-xl">{token.balance}</div>
                             </motion.div>
                           ))}
                         </AnimatePresence>
@@ -189,18 +189,18 @@ export default function CoinDetailsComponent() {
           </ModalContent>
         </Modal>
       </div>
-            <div className="flex justify-between text-xs text-gray-400 mb-6">
+            <div className="flex justify-between text-xl text-gray-400 mb-6">
               <div>Buy limit: 6000 <span className="text-blue-400">○</span></div>
               <div>Wallet Balance: 0.00012</div>
             </div>
             <div className=" bg-[#121212] border border-gray-700 rounded-lg p-4 mb-4">
             <div className="flex justify-between items-center mt-4 ">
-              <div className="text-sm font-bold">10 - 100</div>
+              <div className="text-xl font-bold">10 - 100</div>
 
                     <motion.div 
           onClick={onOpen}
           whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
-          className="right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-sm"
+          className="right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-xl"
         >
           {selectedToken ? (
             <>
@@ -219,21 +219,21 @@ export default function CoinDetailsComponent() {
             </div>
             <hr className="mb-4 mt-1"/>
             <div className="my-2">
-                <div className="text-gray-400 text-xs flex justify-between"><p>Current price:</p>
-                <p className="text-gray-100 text-sm">10 USDC per KAN</p></div>
+                <div className="text-gray-400 text-xl flex justify-between"><p>Current price:</p>
+                <p className="text-gray-100 text-xl">10 USDC per KAN</p></div>
               </div>
               <div className="my-2">
-                <div className="text-gray-400 text-xs flex justify-between"><p>Available:</p>
-                <p className="text-gray-100 text-sm">10M <span className="text-blue-400">◈</span></p></div>
+                <div className="text-gray-400 text-xl flex justify-between"><p>Available:</p>
+                <p className="text-gray-100 text-xl">10M <span className="text-blue-400">◈</span></p></div>
               </div>
               <div className="my-2">
-                <div className="text-gray-400 text-xs flex justify-between"><p>Allocation weight:</p>
+                <div className="text-gray-400 text-xl flex justify-between"><p>Allocation weight:</p>
                 <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-700">
-                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Buying price</th>
-                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4">End price</th>
+                  <th className="text-left text-xl text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Buying price</th>
+                  <th className="text-left text-xl text-gray-400 font-normal py-2 px-4">End price</th>
                 </tr>
               </thead>
               <tbody>

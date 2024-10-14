@@ -70,7 +70,7 @@ export default function MainContent() {
     <div className=" text-white p-6  max-w-3xl mt-10 mx-auto">
       <div className="flex justify-between items-center mb-12">
         <motion.button
-          className="flex items-center text-xs text-slate-400"
+          className="flex items-center text-xl text-slate-400"
           whileHover={{ x: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => router.push("/")}
@@ -94,7 +94,7 @@ export default function MainContent() {
 
       <div className="space-y-6 bg-[#121212] bg-transparent-40 text-white p-6 rounded-lg">
         <div>
-          <h2 className="text-xs font-medium mb-2">Amount to be added</h2>
+          <h2 className="text-xl font-medium mb-2">Amount to be added</h2>
           <div className="relative">
             <input
               type="text"
@@ -114,12 +114,12 @@ export default function MainContent() {
 
         <div>
           <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xs font-medium">
+            <h2 className="text-xl font-medium">
               Select distribution <br /> structure
             </h2>
             <motion.a
   href="#"
-  className="group flex items-center text-xs font-medium"
+  className="group flex items-center text-xl font-medium"
   whileHover={{ scale: 1.05 }}
 >
   <span className="text-purple-400 group-hover:text-purple-600 hover:underline transition-colors duration-200">
@@ -154,7 +154,7 @@ export default function MainContent() {
                     />
                   ))}
                 </div>
-                <p className="text-center mt-2 text-sm">{option.label}</p>
+                <p className="text-center mt-2 text-xl">{option.label}</p>
               </motion.div>
             ))}
           </div>
@@ -163,7 +163,7 @@ export default function MainContent() {
         <div className="w-full  text-white p-4 flex items-start justify-between">
       <div className="flex-1 mr-4">
         <h2 className="text-lg font-semibold mb-2">Set distribution range</h2>
-        <p className="text-sm text-gray-400 mb-2">
+        <p className="text-xl text-gray-400 mb-2">
           Starting price: {startingPrice.toFixed(3)} USDC per KAN
         </p>
         <Slider
@@ -175,7 +175,7 @@ export default function MainContent() {
         />
       </div>
       <div className="flex flex-col items-end">
-      <span className="text-xs text-center text-gray-400 mb-1">Max Price</span>
+      <span className="text-xl text-center text-gray-400 mb-1">Max Price</span>
         <div className="flex items-center bg-zinc-800 rounded-md">
    
         <div className="div">
@@ -189,7 +189,7 @@ export default function MainContent() {
             type="number"
             value={maxPrice.toFixed(5)}
             onChange={handleMaxPriceChange}
-            className="w-24 h-8 bg-transparent border-none text-center text-sm"
+            className="w-24 h-8 bg-transparent border-none text-center text-xl"
           />
           <button
             className="h-8 w-8 text-gray-400"
@@ -252,14 +252,14 @@ export default function MainContent() {
             className=""
           >
             <div className="p-4 flex justify-between items-center border-b border-gray-700">
-              <h2 className="text-white text-sm font-semibold">LP</h2>
+              <h2 className="text-white text-xl font-semibold">LP</h2>
               <button onClick={onClose} className="text-gray-400  hover:text-white">
                 <X size={20} />
               </button>
             </div>
       <div className="space-y-6">
         <div>
-          <label htmlFor="limitPerUser" className="block text-xs font-medium mt-4 mb-2">
+          <label htmlFor="limitPerUser" className="block text-xl font-medium mt-4 mb-2">
             Limit per user
           </label>
           <motion.div variants={inputVariants} whileFocus="focus" initial="blur" animate="blur">
@@ -281,13 +281,13 @@ export default function MainContent() {
         </div>
 
         <div>
-          <h3 className="text-xs mb-2">Allocation weight</h3>
+          <h3 className="text-xl mb-2">Allocation weight</h3>
           <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-700">
-                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Buying price</th>
-                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4">End price</th>
+                  <th className="text-left text-xl text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Buying price</th>
+                  <th className="text-left text-xl text-gray-400 font-normal py-2 px-4">End price</th>
                 </tr>
               </thead>
               <tbody>
@@ -301,14 +301,14 @@ export default function MainContent() {
         </div>
 
         <div>
-          <h3 className="text-xs mb-2">Duration</h3>
+          <h3 className="text-xl mb-2">Duration</h3>
           <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-700">
-                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Days</th>
-                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Hours</th>
-                  <th className="text-left text-xs text-gray-400 font-normal py-2 px-4">Minutes</th>
+                  <th className="text-left text-xl text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Days</th>
+                  <th className="text-left text-xl text-gray-400 font-normal py-2 px-4 border-r border-gray-700">Hours</th>
+                  <th className="text-left text-xl text-gray-400 font-normal py-2 px-4">Minutes</th>
                 </tr>
               </thead>
               <tbody>
@@ -367,7 +367,7 @@ export default function MainContent() {
         </ModalContent>
       </Modal>
         {!isFormComplete() && (
-  <p className="text-red-500 text-sm mt-2 text-center">
+  <p className="text-red-500 text-xl mt-2 text-center">
     {amount === "0.00"
       ? "Please enter an amount to add"
       : selectedDistribution === ""

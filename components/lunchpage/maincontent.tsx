@@ -24,7 +24,7 @@ const tokens: Token[] = [
 export default function MainContent() {
   const router = useRouter();
   const [activePrice, setActivePrice] = useState("0.0");
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchTerm, setSearchTerm] = useState("");
   const [baseToken, setBaseToken] = useState<Token | null>(null);
@@ -69,7 +69,7 @@ export default function MainContent() {
     <div className=" text-white p-6  max-w-3xl mt-10 mx-auto">
       <div className="flex justify-between items-center mb-12">
         <motion.button
-          className="flex items-center text-xs text-slate-400"
+          className="flex items-center text-xl text-slate-400"
           whileHover={{ x: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => router.push('/')}
@@ -95,14 +95,14 @@ export default function MainContent() {
       <div className="space-y-6 bg-[#121212] bg-transparent-40 text-white p-6 rounded-lg">
    
         <div>
-          <label className="block mb-2 text-xs font-medium">Select base asset</label>
+          <label className="block mb-2 text-xl font-medium">Select base asset</label>
           <motion.div
             className="bg-[#121212] border border-slate-800 py-4 px-6 rounded flex justify-between items-center cursor-pointer"
             whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
             whileTap={{ scale: 0.98 }}
             onClick={onOpen}
           >
-           <span className="flex text-xs items-center">
+           <span className="flex text-xl items-center">
               {baseToken ? (
                 <>
                   <img src={baseToken.icon} alt={baseToken.name} className="w-6 h-6 mr-2" />
@@ -128,7 +128,7 @@ export default function MainContent() {
             className=""
           >
             <div className="p-4 flex justify-between items-center border-b border-gray-700">
-              <h2 className="text-white text-sm font-semibold">Select token</h2>
+              <h2 className="text-white text-xl font-semibold">Select token</h2>
               <button onClick={onClose} className="text-gray-400  hover:text-white">
                 <X size={20} />
               </button>
@@ -159,11 +159,11 @@ export default function MainContent() {
                       <div className="flex items-center">
                         <img src={token.icon} alt={token.name} className="w-8 h-8 mr-3" />
                         <div>
-                          <div className="text-white font-medium text-xs">{token.name}</div>
+                          <div className="text-white font-medium text-xl">{token.name}</div>
                           <div className="text-gray-400 text-[8px]">{token.fullName}</div>
                         </div>
                       </div>
-                      <div className="text-white text-xs">{token.balance}</div>
+                      <div className="text-white text-xl">{token.balance}</div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
@@ -176,14 +176,14 @@ export default function MainContent() {
         </ModalContent>
       </Modal>
       <div>
-  <label className="block mb-2 text-xs font-medium">Select quote asset</label>
+  <label className="block mb-2 text-xl font-medium">Select quote asset</label>
   <motion.div
     className="bg-[#121212] border border-slate-800 py-4 px-6 rounded flex justify-between items-center cursor-pointer"
     whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
     whileTap={{ scale: 0.98 }}
     onClick={() => openTokenModal(false)}
   >
-    <span className="flex text-xs items-center">
+    <span className="flex text-xl items-center">
       {quoteToken ? (
         <>
           <img src={quoteToken.icon} alt={quoteToken.name} className="w-6 h-6 mr-2" />
@@ -209,7 +209,7 @@ export default function MainContent() {
             transition={{ duration: 0.2 }}
           >
             <div className="p-4 flex justify-between items-center border-b border-gray-700">
-              <h2 className="text-white text-sm font-semibold">Select quote token</h2>
+              <h2 className="text-white text-xl font-semibold">Select quote token</h2>
               <button onClick={onClose} className="text-gray-400 hover:text-white">
                 <X size={20} />
               </button>
@@ -242,11 +242,11 @@ export default function MainContent() {
                         <div className="flex items-center">
                           <img src={token.icon} alt={token.name} className="w-8 h-8 mr-3" />
                           <div>
-                            <div className="text-white font-medium text-xs">{token.name}</div>
+                            <div className="text-white font-medium text-xl">{token.name}</div>
                             <div className="text-gray-400 text-[8px]">{token.fullName}</div>
                           </div>
                         </div>
-                        <div className="text-white text-xs">{token.balance}</div>
+                        <div className="text-white text-xl">{token.balance}</div>
                       </motion.div>
                     ))}
                 </AnimatePresence>
@@ -260,10 +260,10 @@ export default function MainContent() {
 </Modal>
         <div>
           <div className="flex justify-between items-center mt-4 mb-2">
-            <label className="text-xs ">Preset</label>
+            <label className="text-xl ">Preset</label>
      <motion.a
   href="#"
-  className="group flex items-center text-xs font-medium"
+  className="group flex items-center text-xl font-medium"
   whileHover={{ scale: 1.05 }}
 >
   <span className="text-purple-400 group-hover:text-purple-600 hover:underline transition-colors duration-200">
@@ -296,7 +296,7 @@ export default function MainContent() {
     >
       <div className="flex flex-col items-center justify-center h-full">
         <div className="text-lg font-semibold">{preset.percentage}</div>
-        <div className="text-xs text-gray-500">Fee: {preset.fee}</div>
+        <div className="text-xl text-gray-500">Fee: {preset.fee}</div>
       </div>
     </motion.div>
   ))}
@@ -304,7 +304,7 @@ export default function MainContent() {
         </div>
 
         <div>
-          <label className="block mb-2 text-xs font-medium">Enter active price</label>
+          <label className="block mb-2 text-xl font-medium">Enter active price</label>
           <input
   type="text"
   value={activePrice}
@@ -345,7 +345,7 @@ export default function MainContent() {
   </span>
 </motion.button>
 {!isFormComplete() && (
-  <p className="text-red-500 text-sm mt-2 text-center">
+  <p className="text-red-500 text-xl mt-2 text-center">
     {!baseToken || !quoteToken
       ? "Please select both base and quote tokens"
       : baseToken === quoteToken

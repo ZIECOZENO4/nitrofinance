@@ -43,7 +43,7 @@ export default function CardContent() {
             whileTap={{ scale: 0.95 }}
           >
             <div 
-              className={`absolute inset-0  ${
+              className={`absolute text-md inset-0  ${
                 selectedButton === button ? "text-white bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900 opacity-70" : "bg-gradient-to-r from-purple-200 via-purple-400 to-purple-600 text-transparent bg-clip-text"
               }`}
               style={{
@@ -106,7 +106,7 @@ export default function CardContent() {
     }`}
   ></span>
   <span 
-    className={`text-sm ${
+    className={`text-xl ${
       item.status === "Ongoing" ? "text-[#ffa500]" :
       item.status === "Upcoming" ? "text-[#33e942]" :
       "text-[#ff0000]"
@@ -117,41 +117,41 @@ export default function CardContent() {
 </span>
     </span>
             </div>
-            <div className="flex justify-start gap-6 text-sm mb-8">
+            <div className="flex justify-start gap-6 text-xl mb-8">
             <CustomChip text="0x23..34d" hoverText="Wallet Address" />
             <CustomChip text="0.03%" hoverText="Bin Step" />
 </div>
-            <div className="flex justify-between items-center text-sm mb-4">
-              <span className='text-xs text-slate-600'>Total Locked</span>
+            <div className="flex justify-between items-center text-xl mb-4">
+              <span className='text-xl text-slate-600'>Total Locked</span>
               <div className="flex items-center ">
                 <span>{item.locked}</span>
-                <img src='/images/Capture.PNG' className='h-4 w-4 ' alt='logo' />    
+                <img src='/images/Capture.PNG' className='h-6 w-6 ' alt='logo' />    
                 <div className="w-20 h-2 bg-purple-900 rounded-full ml-2">
                   <div className="w-3/4 h-full bg-purple-400 rounded-full"></div>
                 </div>
               </div>
             </div>
-            <div className="flex justify-between items-center text-sm mb-4">
-              <span  className='text-xs text-slate-600'>Total Volume</span>
+            <div className="flex justify-between items-center text-xl mb-4">
+              <span  className='text-xl text-slate-600'>Total Volume</span>
               <div className="flex items-center ">
               <span>{item.volume}</span>
               <img src='/images/usdc.PNG' className='h-4 w-4' alt='logo' />   
               </div>
             </div>
             <div className="rounded-lg bg-[#1d1f1f] bg-opacity-30 p-4 mt-8">
-            <div className="text-sm mb-2">
-            <div className="flex justify-between items-center text-sm mb-4">
+            <div className="text-xl mb-2">
+            <div className="flex justify-between items-center text-xl mb-4">
             <div className="gap-4">
               <span className="text-gray-600">Starting price</span>
               <span className="float-right text-gray-600">Final price</span>
               </div>
-              <div className="text-right text-xs text-[#ff0000]">{item.time}</div>
+              <div className="text-right text-xl text-[#ff0000]">{item.time}</div>
               </div>
             </div>
             <div className="w-full h-4 bg-purple-900 rounded-full mb-2">
               <div className="w-3/4 h-full bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500 rounded-full"></div>
             </div>
-            <div className="flex justify-between items-center text-sm mb-4">
+            <div className="flex justify-between items-center text-xl mb-4">
         
               <span className="text-gray-600">SP</span>
               <span className="float-right text-gray-600">FP</span>
