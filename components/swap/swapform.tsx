@@ -204,7 +204,7 @@ export default function SwapForm() {
                         <img src={token.icon} alt={token.name} className="w-8 h-8 mr-3" />
                         <div>
                           <div className="text-white font-medium text-xl">{token.name}</div>
-                          <div className="text-gray-400 text-[8px]">{token.fullName}</div>
+                          <div className="text-gray-400 text-sm">{token.fullName}</div>
                         </div>
                       </div>
                       <div className="text-white text-xl">{token.balance}</div>
@@ -307,7 +307,7 @@ export default function SwapForm() {
                           <img src={token.icon} alt={token.name} className="w-8 h-8 mr-3" />
                           <div>
                             <div className="text-white font-medium text-xl">{token.name}</div>
-                            <div className="text-gray-400 text-[8px]">{token.fullName}</div>
+                            <div className="text-gray-400 text-sm">{token.fullName}</div>
                           </div>
                         </div>
                         <div className="text-white text-xl">{token.balance}</div>

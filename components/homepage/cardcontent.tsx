@@ -44,7 +44,7 @@ export default function CardContent() {
             whileTap={{ scale: 0.95 }}
           >
             <div 
-              className={`absolute text-md inset-0  ${
+              className={`absolute text-sm inset-0  ${
                 selectedButton === button ? "text-white bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900 opacity-70" : "bg-gradient-to-r from-purple-200 via-purple-400 to-purple-600 text-transparent bg-clip-text"
               }`}
               style={{
