@@ -1,4 +1,5 @@
 import PoolHero from "@/components/pool/poolhero";
+import PoolTable from "@/components/pool/table";
 import SecondNavBar from "@/components/swap/SecondNav";
 
 
@@ -7,6 +8,7 @@ export default function Pool() {
     <div className="div">
       <SecondNavBar />
    <PoolHero />
+   <PoolTable />
     </div>
   );
 }
