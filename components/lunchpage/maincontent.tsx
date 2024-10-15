@@ -63,7 +63,7 @@ export default function MainContent() {
   ]
 
   const isFormComplete = () => {
-    return baseToken && quoteToken && baseToken !== quoteToken && activePrice !== "0.0" && activePrice !== "";
+    return baseToken && quoteToken && baseToken !== quoteToken && activePrice !== "" && activePrice !== "";
   };
   return (
     <div className=" text-white md:p-6 w-full md:max-w-3xl mt-4 md:mt-10 mx-auto">
@@ -306,7 +306,7 @@ export default function MainContent() {
         <div>
           <label className="block mb-2 text-xl font-medium">Enter active price</label>
           <input
-  type="text"
+  type="number"
   value={activePrice}
   onChange={(e) => setActivePrice(e.target.value)}
   className="bg-[#121212] border border-slate-800 p-6 rounded w-full outline-none focus:outline-none focus:ring-2 focus:ring-purple-600 placeholder-gray-500"
