@@ -51,7 +51,7 @@ export default function PoolHero() {
           </div>
            <motion.button
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }} className="bg-purple-600 mx-3 hover:bg-purple-400 text-white font-semibold py-2 px-8 rounded-md flex items-center">
+              whileTap={{ scale: 0.95 }} className="bg-purple-600 mx-3 hover:bg-opacity-40 text-white font-semibold py-2 px-8 rounded-md flex items-center">
             <PlusIcon className="w-5 h-5 mr-2 text-white" />
             Create pool
           </motion.button>
