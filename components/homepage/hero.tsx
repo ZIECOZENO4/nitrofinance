@@ -1,5 +1,5 @@
 'use client'
-
+import React from "react";
 import { useRouter } from 'next/navigation'
 
 export default function HomeHero() {
@@ -16,7 +16,7 @@ export default function HomeHero() {
           <div className="flex flex-col justify-center h-full max-w-md p-8 text-white">
             <h2 className=" md:text-[60px] text-4xl font-bold">KANNON</h2>
             <h2 className=" mb-[100px]  md:text-[60px] text-4xl font-bold">LAUNCHPAD</h2>
-            <button onClick={() => router.push('/lunch')} className="buttona bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900">
+            <button onClick={() => router.push('/lunch')} className="buttona bg-gradient-to-r from-purple-400 via-purple-600 to-purple-900 md:mx-8">
       <div className="bg"></div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ export default function HomeHero() {
         viewBox="0 0 342 208"
         height="208"
         width="342"
-        className="splash"
+        className="splash -ml-4 pr-3"
       >
         <path
           strokeLinecap="round"
@@ -93,62 +93,52 @@ export default function HomeHero() {
           d="M62.2941 145.984C62.2941 145.984 55.4671 161.167 40.4932 162.746C25.5194 164.326 23.7159 174.449 23.7159 174.449"
         ></path>
       </svg>
-
       <div className="wrap">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 221 42"
-          height="42"
-          width="221"
-          className="path"
-        >
-          <path
-            strokeLinecap="round"
-            strokeWidth="3"
-            d="M182.674 2H203C211.837 2 219 9.16344 219 18V24C219 32.8366 211.837 40 203 40H18C9.16345 40 2 32.8366 2 24V18C2 9.16344 9.16344 2 18 2H47.8855"
-          ></path>
-        </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 221 42" height="42" width="221" className="path ">
+      <path strokeLinecap="round" strokeWidth="3" d="M182.674 2H203C211.837 2 219 9.16344 219 18V24C219 32.8366 211.837 40 203 40H18C9.16345 40 2 32.8366 2 24V18C2 9.16344 9.16344 2 18 2H47.8855"></path>
+    </svg>
 
-        <div className="outline"></div>
-        <div className="content">
-          <span className="char state-1">
-            <span data-label="C" style={{ '--i': 1 } as React.CSSProperties}>C</span>
-            <span data-label="r" style={{ '--i': 2 } as React.CSSProperties}>r</span>
-            <span data-label="e" style={{ '--i': 3 } as React.CSSProperties}>e</span>
-            <span data-label="a" style={{ '--i': 4 } as React.CSSProperties}>a</span>
-            <span data-label="t" style={{ '--i': 5 } as React.CSSProperties}>t</span>
-            <span data-label="e" style={{ '--i': 6 } as React.CSSProperties}>e</span>
-            <span data-label=" " style={{ '--i': 7 } as React.CSSProperties}> </span>
-            <span data-label="n" style={{ '--i': 8 } as React.CSSProperties}>n</span>
-            <span data-label="e" style={{ '--i': 9 } as React.CSSProperties}>e</span>
-            <span data-label="w" style={{ '--i': 10 } as React.CSSProperties}>w</span>
-            <span data-label=" " style={{ '--i': 11 } as React.CSSProperties}> </span>
-            <span data-label="p" style={{ '--i': 12 } as React.CSSProperties}>p</span>
-            <span data-label="o" style={{ '--i': 13 } as React.CSSProperties}>o</span>
-            <span data-label="o" style={{ '--i': 14 } as React.CSSProperties}>o</span>
-            <span data-label="l" style={{ '--i': 15 } as React.CSSProperties}>l</span>
-          </span>
+    <div className="outline"></div>
+    <div className="content ">
+      <span className="char state-1 pl-4">
+        {['Create', 'New', 'Pool'].map((word, wordIndex) => (
+          <React.Fragment key={wordIndex}>
+            {word.split('').map((char, charIndex) => (
+              <span 
+                key={`${wordIndex}-${charIndex}`} 
+                data-label={char} 
+                style={{ '--i': charIndex + 1 } as React.CSSProperties}
+              >
+                {char}
+              </span>
+            ))}
+            {wordIndex < 2 && <span style={{ marginRight: '0.5rem' }}></span>}
+          </React.Fragment>
+        ))}
+      </span>
 
-          <div className="icon">
-            <div></div>
-          </div>
-
-          <span className="char state-2">
-            <span data-label="L" style={{ '--i': 1 } as React.CSSProperties}>L</span>
-            <span data-label="a" style={{ '--i': 2 } as React.CSSProperties}>a</span>
-            <span data-label="u" style={{ '--i': 3 } as React.CSSProperties}>u</span>
-            <span data-label="n" style={{ '--i': 4 } as React.CSSProperties}>n</span>
-            <span data-label="c" style={{ '--i': 5 } as React.CSSProperties}>c</span>
-            <span data-label="h" style={{ '--i': 6 } as React.CSSProperties}>h</span>
-            <span data-label=" " style={{ '--i': 7 } as React.CSSProperties}> </span>
-            <span data-label="p" style={{ '--i': 8 } as React.CSSProperties}>p</span>
-            <span data-label="o" style={{ '--i': 9 } as React.CSSProperties}>o</span>
-            <span data-label="o" style={{ '--i': 10 } as React.CSSProperties}>o</span>
-            <span data-label="l" style={{ '--i': 11 } as React.CSSProperties}>l</span>
-          </span>
-        </div>
+      <div className="icon">
+        <div></div>
       </div>
+
+      <span className="char state-2 pr-4">
+        {['Launch', 'Pool'].map((word, wordIndex) => (
+          <React.Fragment key={wordIndex}>
+            {word.split('').map((char, charIndex) => (
+              <span 
+                key={`${wordIndex}-${charIndex}`} 
+                data-label={char} 
+                style={{ '--i': charIndex + 1 } as React.CSSProperties}
+              >
+                {char}
+              </span>
+            ))}
+            {wordIndex < 1 && <span style={{ marginRight: '0.5rem' }}></span>}
+          </React.Fragment>
+        ))}
+      </span>
+    </div>
+  </div>
     </button>
           </div>
         </div>

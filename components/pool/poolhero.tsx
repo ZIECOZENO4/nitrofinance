@@ -3,7 +3,7 @@ import { LockIcon, TrendingUpIcon, SearchIcon, PlusIcon } from "lucide-react"
 export default function PoolHero() {
   return (
     <div className="bg-black text-white w-full h-[70vh] mb-4 mt-4 md:mt-10 overflow-hidden rounded-lg ">
-      <div className="max-w-6xl mx-auto">
+      <div className=" mx-auto">
         <div className="flex justify-between items-start mb-16">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full bg-[#011e2b] flex items-center justify-center">
@@ -14,7 +14,7 @@ export default function PoolHero() {
               <div className="text-sm text-gray-500">Total Value Locked</div>
             </div>
           </div>
-          <div className="text-center">
+          <div className="text-center h-40 align-middle border-white">
             <h1 className="text-4xl font-bold mb-2">Liquidity Pool</h1>
             <p className="text-gray-500">Trade meme coins and utility tokens with 0% slippage.</p>
           </div>

@@ -125,17 +125,17 @@ export default function CardContent() {
             <CustomChip text="0.03%" hoverText="Bin Step" />
 </div>
             <div className="flex justify-between items-center text-xl mb-4">
-              <span className='text-xl text-slate-600'>Total Locked</span>
+              <span className='text-xl text-slate-400'>Total Locked</span>
               <div className="flex items-center ">
                 <span>{item.locked}</span>
                 <img src='/images/Capture.PNG' className='h-6 w-6 ' alt='logo' />    
-                <div className="w-20 h-2 bg-purple-900 rounded-full ml-2">
-                  <div className="w-3/4 h-full bg-purple-400 rounded-full"></div>
+                <div className="w-20 h-2 bg-slate-900 rounded-full ml-2">
+                  <div className="w-3/4 h-full bg-purple-600 rounded-full"></div>
                 </div>
               </div>
             </div>
             <div className="flex justify-between items-center text-xl mb-4">
-              <span  className='text-xl text-slate-600'>Total Volume</span>
+              <span  className='text-xl text-slate-400'>Total Volume</span>
               <div className="flex items-center ">
               <span>{item.volume}</span>
               <img src='/images/usdc.PNG' className='h-4 w-4' alt='logo' />   
@@ -145,19 +145,19 @@ export default function CardContent() {
             <div className="text-xl mb-2">
             <div className="flex justify-between items-center text-xl mb-4">
             <div className="gap-4">
-              <span className="text-gray-600">Starting price</span>
-              <span className="float-right text-gray-600">Final price</span>
+              <span className="text-slate-400">Starting price</span>
+              <span className="float-right text-slate-400">Final price</span>
               </div>
               <div className="text-right text-xl text-[#ff0000]">{item.time}</div>
               </div>
             </div>
-            <div className="w-full h-4 bg-purple-900 rounded-full mb-2">
-              <div className="w-3/4 h-full bg-gradient-to-r from-purple-200 via-purple-300 to-purple-500 rounded-full"></div>
+            <div className="w-full h-4 bg-slate-900 rounded-full mb-2">
+              <div className="w-3/4 h-full bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 rounded-full"></div>
             </div>
             <div className="flex justify-between items-center text-xl mb-4">
         
-              <span className="text-gray-600">SP</span>
-              <span className="float-right text-gray-600">FP</span>
+              <span className="text-slate-400">SP</span>
+              <span className="float-right text-slate-400">FP</span>
               </div>
               </div>
           </motion.div>

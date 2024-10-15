@@ -182,27 +182,38 @@ export default function SwapForm() {
                   className="flex flex-row gap-2 text-[10px] bg-gray-800 p-1 rounded-full text-sm mb-2"
                 >
                   {baseToken ? (
-                    <>
-                      <img
-                        src={baseToken.icon}
-                        alt={baseToken.name}
-                        className="w-4 h-4 rounded-full mr-1"
-                      />
-                      <span className="mr-1"> {baseToken.name}</span>
-                    </>
+                    <div className="flex flex-row w-auto gap-2">
+  
+                      <div className="flex items-center align-middle gap-1">
+               
+           
+               <img
+                src={baseToken.icon}
+                alt={baseToken.name}
+            
+                 className="h-4 w-4 rounded-full"
+             
+               />
+                   <span className=" text-purple-500  text-sm">{baseToken.name}</span>
+             </div>
+                    </div>
                   ) : (
                     <div className="flex flex-row w-auto gap-2">
-                      <img
-                        src="/images/Capture.PNG"
-                        className="h-4 w-4 mt-1"
-                        alt="logo"
-                      />
-                      <span className="text-purple-500 text-sm gap-3">KAN</span>
+                     <div className="flex items-center align-middle gap-1">
+               
+           
+               <img
+                 src="/images/circle.PNG"
+                 className="h-4 w-4 rounded-full"
+                 alt="logo"
+               />
+                   <span className=" text-purple-500  text-sm"> MONAD</span>
+             </div>
                       <ChevronDown size={20} className="text-purple-500" />
                     </div>
                   )}
                 </motion.div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-slate-400">
                   Balance: 0.000340 {baseToken ? baseToken.name : "KAN"}
                 </p>
               </div>
@@ -313,28 +324,39 @@ export default function SwapForm() {
                   whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
                   className="flex flex-row gap-2 text-[10px] bg-gray-800 p-1 rounded-full text-sm mb-2"
                 >
-                  {quoteToken ? (
-                    <>
-                      <img
-                        src={quoteToken.icon}
-                        alt={quoteToken.name}
-                        className="w-4 h-4 rounded-full mr-1"
-                      />
-                      <span className="mr-1"> {quoteToken.name}</span>
-                    </>
+                 {quoteToken ? (
+                    <div className="flex flex-row w-auto gap-2">
+  
+                      <div className="flex items-center align-middle gap-1">
+               
+           
+               <img
+                src={quoteToken.icon}
+                alt={quoteToken.name}
+            
+                 className="h-4 w-4 rounded-full"
+             
+               />
+                   <span className=" text-purple-500  text-sm">{quoteToken.name}</span>
+             </div>
+                    </div>
                   ) : (
                     <div className="flex flex-row w-auto gap-2">
-                      <img
-                        src="/images/Capture.PNG"
-                        className="h-4 w-4 mt-1"
-                        alt="logo"
-                      />
-                      <span className="text-purple-500 text-sm gap-3">KAN</span>
+                     <div className="flex items-center align-middle gap-1">
+               
+           
+               <img
+                 src="/images/circle.PNG"
+                 className="h-4 w-4 rounded-full"
+                 alt="logo"
+               />
+                   <span className=" text-purple-500  text-sm"> MONAD</span>
+             </div>
                       <ChevronDown size={20} className="text-purple-500" />
                     </div>
                   )}
                 </motion.div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-slate-400">
                   Balance: 0.000340 {quoteToken ? quoteToken.name : "KAN"}
                 </p>
               </div>

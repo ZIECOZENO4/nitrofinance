@@ -23,7 +23,7 @@ const tokens: Token[] = [
 
 export default function MainContent() {
   const router = useRouter();
-  const [activePrice, setActivePrice] = useState("0.0");
+  const [activePrice, setActivePrice] = useState("");
   const [selectedTab, setSelectedTab] = useState(1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchTerm, setSearchTerm] = useState("");

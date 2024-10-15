@@ -147,22 +147,22 @@ export default function CoinDetailsComponent() {
                 className="absolute right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-xl"
               >
                 {selectedToken ? (
-                  <>
+                 <div className="flex items-center align-middle gap-1">
                     <img
                       src={selectedToken.icon}
                       alt={selectedToken.name}
-                      className="w-4 h-4 mt-1"
+                      className="w-4 h-4 rounded-full"
                     />
-                    {selectedToken.name}
-                  </>
+                        <span className=" text-purple-500 font-bold">{selectedToken.name}</span>    
+                  </div>
                 ) : (
-                  <div className="flex gap-2">
+                  <div className="flex items-center align-middle gap-1">
                     <img
-                      src="/images/Capture.PNG"
-                      className="h-4 w-4 mt-1"
+                      src="/images/circle.PNG"
+                      className="h-4 w-4 rounded-full"
                       alt="logo"
                     />
-                    <span className=" text-purple-500 font-bold"> KAN</span>
+                    <span className=" text-purple-500 font-bold"> MONAD</span>
                   </div>
                 )}
               </motion.div>
@@ -260,25 +260,25 @@ export default function CoinDetailsComponent() {
                   whileHover={{ backgroundColor: "rgba(45, 212, 191, 0.1)" }}
                   className="right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] bg-gray-800 px-2 py-1 rounded-full text-xl"
                 >
-                  {selectedToken ? (
-                    <>
-                      <img
-                        src={selectedToken.icon}
-                        alt={selectedToken.name}
-                        className="w-4 h-4 mt-1"
-                      />
-                      {selectedToken.name}
-                    </>
-                  ) : (
-                    <div className=" flex gap-2">
-                      <img
-                        src="/images/Capture.PNG"
-                        className="h-4 w-4 mt-1"
-                        alt="logo"
-                      />
-                      <span className=" text-purple-500 font-bold"> KAN</span>
-                    </div>
-                  )}
+                    {selectedToken ? (
+                 <div className="flex items-center align-middle gap-1">
+                    <img
+                      src={selectedToken.icon}
+                      alt={selectedToken.name}
+                      className="w-4 h-4 rounded-full"
+                    />
+                        <span className=" text-purple-500 font-bold">{selectedToken.name}</span>    
+                  </div>
+                ) : (
+                  <div className="flex items-center align-middle gap-1">
+                    <img
+                      src="/images/circle.PNG"
+                      className="h-4 w-4 rounded-full"
+                      alt="logo"
+                    />
+                    <span className=" text-purple-500 font-bold"> MONAD</span>
+                  </div>
+                )}
                 </motion.div>
               </div>
               <hr className="mb-4 mt-1" />
@@ -291,10 +291,17 @@ export default function CoinDetailsComponent() {
               <div className="my-2">
                 <div className="text-gray-400 text-xl flex justify-between">
                   <p>Available:</p>
-                  <p className="text-gray-100 text-xl">
-                    10M <span className="text-blue-400">◈</span>
-                  </p>
-                </div>
+              
+                        <div className="flex items-center align-middle gap-1">
+               
+                    <span className=" text-gray-100  text-xl">   10M</span>
+                    <img
+                      src="/images/circle.PNG"
+                      className="h-4 w-4 rounded-full"
+                      alt="logo"
+                    />
+                  </div>
+                               </div>
               </div>
               <div className="my-2">
                 <div className="text-gray-400 text-xl flex justify-between">
@@ -314,19 +321,11 @@ export default function CoinDetailsComponent() {
                       <tbody>
                         <tr>
                           <td className="py-2 px-4 border-r border-gray-700">
-                            <input
-                              type="number"
-                              placeholder="1"
-                              className="w-8 h-8 bg-transparent border-none text-center text-xl"
-                            />
+                        10
                             %
                           </td>
                           <td className="py-2 px-4">
-                            <input
-                              type="number"
-                              placeholder="100"
-                              className="w-12 h-8 bg-transparent border-none text-center text-xl"
-                            />
+                         90
                             %
                           </td>
                         </tr>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Modal, ModalContent, useDisclosure } from "@nextui-org/react";
@@ -14,17 +14,17 @@ import { Minus, Plus } from "lucide-react";
 export default function MainContent() {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [amount, setAmount] = useState("0.00");
+  const [amount, setAmount] = useState("");
   const [selectedDistribution, setSelectedDistribution] = useState("ascend");
   const [sliderValue, setSliderValue] = useState(50);
-  const [limitPerUser, setLimitPerUser] = useState("0.00");
-  const [buyingPrice, setBuyingPrice] = useState("10");
-  const [endPrice, setEndPrice] = useState("90");
+  const [limitPerUser, setLimitPerUser] = useState("");
   const [days, setDays] = useState("00");
   const [hours, setHours] = useState("00");
   const [minutes, setMinutes] = useState("00");
   const [startingPrice, setStartingPrice] = React.useState(2.687);
   const [maxPrice, setMaxPrice] = React.useState(6.23489);
+  const [buyingPrice, setBuyingPrice] = useState(10);
+  const [endPrice, setEndPrice] = useState(90);
 
   const handleSliderChange = (value: number[]) => {
     setStartingPrice(value[0]);
@@ -66,9 +66,25 @@ export default function MainContent() {
     { id: "continuum", label: "Continuum", chart: [9, 9, 9, 9, 9, 9, 9, 9, 9] },
   ];
 
+  useEffect(() => {
+    setEndPrice(100 - buyingPrice);
+  }, [buyingPrice]);
+
+  const handleBuyingPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Math.min(100, Math.max(0, parseInt(e.target.value) || 0));
+    setBuyingPrice(value);
+  };
+  
+  const handleEndPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Math.min(100, Math.max(0, parseInt(e.target.value) || 0));
+    setEndPrice(value);
+    setBuyingPrice(100 - value);
+  };
+
+
   const isFormComplete = () => {
     return (
-      amount !== "0.00" &&
+      amount !== "" &&
       selectedDistribution !== "" &&
       sliderValue !== 0 &&
       maxPrice !== 0
@@ -105,7 +121,8 @@ export default function MainContent() {
           <h2 className="text-xl font-medium mb-2">Amount to be added</h2>
           <div className="relative">
             <input
-              type="text"
+              type="number"
+              placeholder="0.00"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               className="w-full bg-[#121212] border border-gray-700 rounded p-6 focus:outline-none focus:border-purple-600"
@@ -216,33 +233,31 @@ export default function MainContent() {
               className="w-full"
             />
           </div>
-          <div className="flex flex-col items-end mt-4 md:mt-0">
-            <span className="text-xl md:text-center text-gray-400 mb-1">
-              Max Price
-            </span>
-            <div className="flex items-center align-middle bg-zinc-800 rounded-md">
-              <div className="div">
-                <button
-                  className="h-8 w-8 text-gray-400"
-                  onClick={decrementMaxPrice}
-                >
-                  <Minus className="h-4 w-4" />
-                </button>
-                <input
-                  type="number"
-                  value={maxPrice.toFixed(5)}
-                  onChange={handleMaxPriceChange}
-                  className="w-24 h-8 bg-transparent border-none text-center text-xl"
-                />
-                <button
-                  className="h-8 w-8 text-gray-400"
-                  onClick={incrementMaxPrice}
-                >
-                  <Plus className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-          </div>
+          <div className="flex flex-col items-center mt-4 md:mt-0">
+  <span className="text-xl text-gray-400 mb-2">
+    Max Price
+  </span>
+  <div className="flex items-center bg-zinc-800 rounded-md">
+    <button
+      className="h-10 w-10 flex items-center justify-center text-gray-400"
+      onClick={decrementMaxPrice}
+    >
+      <Minus className="h-4 w-4" />
+    </button>
+    <input
+      type="number"
+      value={maxPrice.toFixed(5)}
+      onChange={handleMaxPriceChange}
+      className="w-24 h-10 bg-transparent border-none text-center text-xl"
+    />
+    <button
+      className="h-10 w-10 flex items-center justify-center text-gray-400"
+      onClick={incrementMaxPrice}
+    >
+      <Plus className="h-4 w-4" />
+    </button>
+  </div>
+</div>
         </div>
 
         <motion.button
@@ -318,7 +333,8 @@ export default function MainContent() {
                           <div className="relative w-full">
                             <input
                               id="limitPerUser"
-                              type="number"
+                             type="number"
+                            placeholder="0.00"
                               value={limitPerUser}
                               onChange={(e) => setLimitPerUser(e.target.value)}
                               className="bg-[#121212] border border-slate-800 p-6 pr-12 rounded w-full outline-none focus:outline-none focus:ring-2 focus:ring-purple-600 placeholder-gray-500"
@@ -333,46 +349,48 @@ export default function MainContent() {
                       </div>
 
                       <div>
-                        <h3 className="text-xl mb-2">Allocation weight</h3>
-                        <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
-                          <table className="w-full border-collapse">
-                            <thead>
-                              <tr className="border-b border-gray-700">
-                                <th className="text-left text-xl text-gray-400 font-normal py-2 px-4 border-r border-gray-700">
-                                  Buying price
-                                </th>
-                                <th className="text-left text-xl text-gray-400 font-normal py-2 px-4">
-                                  End price
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td className="py-2 px-4 border-r border-gray-700">
-                                  {" "}
-                                  <input
-                                    type="number"
-                                    min={1}
-                                    placeholder="1"
-                                    className="w-12 h-8 bg-transparent border-none text-center text-xl"
-                                  />
-                                  %
-                                </td>
-                                <td className="py-2 px-4">
-                                  <input
-                                    type="number"
-                                    max={100}
-                                    placeholder="100"
-                                    className="w-12 h-8 bg-transparent border-none text-center text-xl"
-                                  />
-                                  %
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-
+      <h3 className="text-xl mb-2">Allocation weight</h3>
+      <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="border-b border-gray-700">
+              <th className="text-left text-xl text-gray-400 font-normal py-2 px-4 border-r border-gray-700">
+                Buying price
+              </th>
+              <th className="text-left text-xl text-gray-400 font-normal py-2 px-4">
+                End price
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="py-2 px-4 border-r border-gray-700">
+                <input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={buyingPrice}
+                  onChange={handleBuyingPriceChange}
+                  className="w-12 h-8 bg-transparent border-none text-center text-xl"
+                />
+                %
+              </td>
+              <td className="py-2 px-4">
+                <input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={endPrice}
+                  onChange={handleEndPriceChange}
+                  className="w-12 h-8 bg-transparent border-none text-center text-xl"
+                />
+                %
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
                       <div>
                         <h3 className="text-xl mb-2">Duration</h3>
                         <div className="bg-[#121212] border border-gray-700 rounded-md overflow-hidden">
