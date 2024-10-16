@@ -9,7 +9,9 @@ export default function PoolHero() {
       <div className=" mx-auto">
         <div className="flex justify-between gap-4 items-start mb-2">
           <div className="flex flex-col gap-4 w-1/3 h-64 ">
-          <div className="flex items-center  rounded-lg h-1/2 bg-gradient-to-br from-black via-slate-900 to-violet-900   space-x-3 px-6">
+      <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }} className="flex items-center  rounded-lg h-1/2 bg-gradient-to-br from-black via-slate-900 to-violet-900   space-x-3 px-6">
             <div className="w-10 h-10 rounded-full bg-[#011e2b] border border-purple-600 bg-opacity-70 flex items-center justify-center">
               <LockIcon className="w-5 h-5 text-purple-600 " />
             </div>
@@ -17,8 +19,10 @@ export default function PoolHero() {
               <div className="text-2xl md:text-3xl font-bold">$88.42K</div>
               <div className="text-sm md:text-xl text-gray-500">Total Value Locked</div>
             </div>
-          </div>
-          <div className="flex items-center rounded-lg h-1/2 bg-gradient-to-br from-gray-900 via-slate-900 to-violet-900 space-x-3 px-6">
+          </motion.div>
+          <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }} className="flex items-center rounded-lg h-1/2 bg-gradient-to-br from-gray-900 via-slate-900 to-violet-900 space-x-3 px-6">
             <div className="w-10 h-10 rounded-full bg-[#011e2b] border border-purple-600 bg-opacity-30 flex items-center justify-center">
               <TrendingUpIcon className="w-5 h-5 text-purple-600 border-purple-600" />
             </div>
@@ -26,19 +30,23 @@ export default function PoolHero() {
               <div className="text-2xl md:text-3xl font-bold">$23.92K</div>
               <div className="text-sm md:text-xl text-gray-500">Total Volume</div>
             </div>
+          </motion.div>
           </div>
-          </div>
-          <div className="flex items-center rounded-lg space-x-3 bg-opacity-70 w-1/3 bg-gradient-to-br from-gray-900 via-slate-900 to-violet-900 h-64">
+          <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}  className="flex items-center rounded-lg space-x-3 bg-opacity-70 w-1/3 bg-gradient-to-br from-gray-900 via-slate-900 to-violet-900 h-64">
             
             <div>
             <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">Liquidity Pool</h1>
             <p className="text-gray-500 text-xl md:text-2xl text-center">Trade meme coins and utility tokens with 0% slippage.</p>
             </div>
-          </div>
+          </motion.div>
       
-          <div className="flex items-center rounded-lg bg-opacity-70 space-x-3 w-1/3 bg-gradient-to-br from-gray-900 via-slate-900 to-violet-900 h-64">
-            
-          </div>
+          <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }} className="flex items-center rounded-lg bg-opacity-70 space-x-3 w-1/3 bg-gradient-to-br from-gray-900 via-slate-900 to-violet-900 h-64">
+            <img src="/images/kancoin.jpeg" alt='kancoin' className="rounded-lg object-cover w-full h-full align-middle" />
+          </motion.div>
         </div>
         <div className="flex justify-between h-40 rounded-lg items-center mb-2 ">
           <div className="relative flex-grow mr-4">

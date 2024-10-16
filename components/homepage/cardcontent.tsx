@@ -146,6 +146,7 @@ export default function CardContent() {
             <div className="flex justify-between items-center text-xl mb-4">
             <div className="gap-4">
               <span className="text-slate-400">Starting price</span>
+              <span className="text-slate-400 mx-1">-</span>
               <span className="float-right text-slate-400">Final price</span>
               </div>
               <div className="text-right text-xl text-[#ff0000]">{item.time}</div>

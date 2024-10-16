@@ -272,11 +272,11 @@ export default function CoinDetailsComponent() {
                 ) : (
                   <div className="flex items-center align-middle gap-1">
                     <img
-                      src="/images/circle.PNG"
-                      className="h-4 w-4 rounded-full"
+                      src="/images/Capture.PNG"
+                      className="h-6 w-6 rounded-full mt-1"
                       alt="logo"
                     />
-                    <span className=" text-purple-500 font-bold"> MONAD</span>
+                    <span className=" text-purple-500 font-bold -ml-1 mr-1">KAN</span>
                   </div>
                 )}
                 </motion.div>

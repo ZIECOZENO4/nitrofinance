@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const cryptoData = [
   {
-    asset: "NIT/USDC",
+    asset: "KAN/USDC",
     icon: "🔷",
     tvl: "$19.92M",
     volume: "$145.26K",
@@ -14,7 +14,7 @@ const cryptoData = [
     nitroPoints: "10,000",
   },
   {
-    asset: "ETH/USDC",
+    asset: "KAN/USDC",
     icon: "💠",
     tvl: "$19.92M",
     volume: "$145.26K",
@@ -24,7 +24,7 @@ const cryptoData = [
     nitroPoints: "10,000",
   },
   {
-    asset: "MONAD/USDC",
+    asset: "KAN/USDC",
     icon: "🔵",
     tvl: "$19.92M",
     volume: "$145.26K",
@@ -77,11 +77,19 @@ export default function PoolTable() {
                 </div>
               </td>
               <td className="text-right py-4">
-               <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }} className="bg-purple-900 bg-opacity-60 rounded-lg p-2 text-white border-purple-700 hover:bg-purple-800 border border-900">
-                  Get Tokens
-                </motion.button>
+              <motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="bg-purple-900 bg-opacity-60 rounded-lg p-2 text-white border-purple-700 hover:bg-purple-800 border border-900 flex items-center justify-center gap-2"
+>
+  <div className="flex w-4 h-4 items-center justify-center">
+    <svg width="34" height="34" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="transparent" stroke="#9333ea" strokeWidth="2" />
+      <path d="M32 20v24M20 32h24" stroke="#9333ea" strokeWidth="4" strokeLinecap="round" />
+    </svg>
+  </div>
+  <span>Get Tokens</span>
+</motion.button>
               </td>
             </tr>
           ))}

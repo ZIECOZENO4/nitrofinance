@@ -203,11 +203,11 @@ export default function SwapForm() {
                
            
                <img
-                 src="/images/circle.PNG"
+                 src="/images/Capture.PNG"
                  className="h-4 w-4 rounded-full"
                  alt="logo"
                />
-                   <span className=" text-purple-500  text-sm"> MONAD</span>
+                   <span className=" text-purple-500  text-sm"> KANNON</span>
              </div>
                       <ChevronDown size={20} className="text-purple-500" />
                     </div>
