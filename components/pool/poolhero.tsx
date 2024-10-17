@@ -1,9 +1,10 @@
 "use client";
-
-import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from 'next/navigation'
+import { motion} from "framer-motion";
 import { LockIcon, TrendingUpIcon, SearchIcon, PlusIcon } from "lucide-react"
 
 export default function PoolHero() {
+  const router = useRouter()
   return (
     <div className="bg-black text-white w-full h-auto mb-4 mt-4 md:mt-10 overflow-hidden rounded-lg ">
       <div className=" mx-auto">
@@ -59,7 +60,9 @@ export default function PoolHero() {
           </div>
            <motion.button
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }} className="bg-purple-600 mx-3 hover:bg-opacity-40 text-white font-semibold py-2 px-8 rounded-md flex items-center">
+              whileTap={{ scale: 0.95 }} 
+              onClick={() => router.push('/pool/create')}
+              className="bg-purple-600 mx-3 hover:bg-opacity-40 text-white font-semibold py-2 px-8 rounded-md flex items-center">
             <PlusIcon className="w-5 h-5 mr-2 text-white" />
             Create pool
           </motion.button>

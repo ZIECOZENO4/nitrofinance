@@ -127,8 +127,8 @@ export default function MainContent() {
               onChange={(e) => setAmount(e.target.value)}
               className="w-full bg-[#121212] border border-gray-700 rounded p-6 focus:outline-none focus:border-purple-600"
             />
-            <div className="absolute right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[10px] ">
-              <span className="mr-1 text-gray-500 mt-8">
+            <div className="absolute right-3 top-1/2 flex flex-row gap-2 transform -translate-y-1/2 text-[15px] ">
+              <span className="mr-1 text-gray-500 mt-[25px]">
                 {" "}
                 Wallet balance: 100 KAN{" "}
               </span>

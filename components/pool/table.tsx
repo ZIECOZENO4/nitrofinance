@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-
+import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation'
 const cryptoData = [
   {
     asset: "KAN/USDC",
@@ -36,6 +36,7 @@ const cryptoData = [
 ]
 
 export default function PoolTable() {
+  const router = useRouter()
   return (
     <div className="w-full p-4 bg-black text-white">
       <table className="w-full">
@@ -80,6 +81,7 @@ export default function PoolTable() {
               <motion.button
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.95 }}
+  onClick={() => router.push('/pool/details')}
   className="bg-purple-900 bg-opacity-60 rounded-lg p-2 text-white border-purple-700 hover:bg-purple-800 border border-900 flex items-center justify-center gap-2"
 >
   <div className="flex w-4 h-4 items-center justify-center">
